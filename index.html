@@ -1,0 +1,3519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Dictionary 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 1%;
+            color: #1a1a2e;
+        }
+        
+        .container {
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            padding: 1%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: #ffe5e5;
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        
+        .search-bar {
+            padding: 1%;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        input[type="search"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="search"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            padding: 1%;
+            gap: 1%;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 8px;
+            background: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #495057;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+        }
+        
+        .content {
+            padding: 1%;
+            max-height: calc(100vh - 180px);
+            overflow-y: auto;
+        }
+        
+        .term {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1%;
+            margin-bottom: 1%;
+            border-radius: 6px;
+        }
+        
+        .term-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 6px;
+        }
+        
+        .term-desc {
+            font-size: 0.8rem;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .code-sample {
+            background: #1a1a2e;
+            color: #00ff88;
+            padding: 1%;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            margin: 2px;
+        }
+        
+        .term-explain {
+            font-size: 0.75rem;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 6px;
+            padding: 6px;
+            background: #e7f3ff;
+            border-radius: 4px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>n8n Dictionary 2026</h1>
+            <div class="subtitle">Workflow Automation Reference</div>
+        </header>
+        
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search terms, nodes, expressions...">
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('dictionary', event)">Dictionary</button>
+            <button class="tab" onclick="showTab('samples', event)">Samples</button>
+            <button class="tab" onclick="showTab('expressions', event)">Expressions</button>
+            <button class="tab" onclick="showTab('tips', event)">Tips & Tricks</button>
+            <button class="tab" onclick="showTab('errors', event)">Common Errors</button>
+        </div>
+        
+        <div class="content" id="content">
+            <!-- Dictionary Tab -->
+            <div id="dictionary" class="tab-content">
+                <div class="term">
+                    <div class="term-title">Workflow</div>
+                    <div class="term-desc">A sequence of connected nodes that automate tasks. Workflows execute when triggered and pass data between nodes.</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Node</div>
+                    <div class="term-desc">Individual building blocks in n8n. Each node performs a specific action like API calls, data transformation, or conditional logic.</div>
+                    <span class="tag">Core</span><span class="tag">Essential</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Trigger Node</div>
+                    <div class="term-desc">Starts workflow execution. Can be manual, scheduled (cron), webhook-based, or event-driven.</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Webhook</div>
+                    <div class="term-desc">HTTP endpoint that receives external requests to trigger workflows. Supports GET, POST, PUT, DELETE methods.</div>
+                    <span class="tag">Trigger</span><span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Expression</div>
+                    <div class="term-desc">JavaScript-like syntax in {{ }} to manipulate data dynamically. Access previous node data, variables, and functions.</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">$json</div>
+                    <div class="term-desc">Variable containing the JSON output from the previous node. Primary way to access processed data.</div>
+                    <span class="tag">Expression</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">$node</div>
+                    <div class="term-desc">Access data from specific named nodes in your workflow, regardless of execution order.</div>
+                    <span class="tag">Expression</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">HTTP Request Node</div>
+                    <div class="term-desc">Make API calls to any HTTP endpoint. Supports authentication, headers, query parameters, and request bodies.</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Code Node</div>
+                    <div class="term-desc">Execute custom JavaScript or Python code within workflows. Full access to items and workflow data.</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">IF Node</div>
+                    <div class="term-desc">Conditional branching. Routes data based on boolean conditions, string matching, or numerical comparisons.</div>
+                    <span class="tag">Logic</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Split In Batches</div>
+                    <div class="term-desc">Process large datasets in smaller chunks to avoid memory issues and rate limits.</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Credentials</div>
+                    <div class="term-desc">Secure storage for API keys, OAuth tokens, and authentication details. Encrypted and reusable across workflows.</div>
+                    <span class="tag">Security</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Set Node</div>
+                    <div class="term-desc">Adds, removes, or modifies fields in your data. Like editing a spreadsheet - you can add new columns, delete old ones, or change values.</div>
+                    <div class="term-explain">💡 Example: You get a user's first and last name separately, use Set to combine them into "Full Name"</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Merge Node</div>
+                    <div class="term-desc">Combines data from multiple sources. Like merging two lists - you can match items, append them, or keep only matching ones.</div>
+                    <div class="term-explain">💡 Example: Match customer emails from your database with new sign-ups from a form</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Function Node</div>
+                    <div class="term-desc">Write JavaScript code to transform data exactly how you need. More flexible than Code Node for complex logic.</div>
+                    <div class="term-explain">💡 Example: Calculate shipping costs based on weight, distance, and customer tier</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Loop Over Items</div>
+                    <div class="term-desc">Process each item in your data one at a time. Like a assembly line - each item goes through the same steps.</div>
+                    <div class="term-explain">💡 Example: Send a personalized email to each customer in your list, one by one</div>
+                    <span class="tag">Logic</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Wait Node</div>
+                    <div class="term-desc">Pauses workflow execution for a specified time or until a specific date. Like setting a timer before continuing.</div>
+                    <div class="term-explain">💡 Example: Send a follow-up email 3 days after someone downloads your ebook</div>
+                    <span class="tag">Logic</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Switch Node</div>
+                    <div class="term-desc">Routes data to different paths based on multiple conditions. Like a traffic controller directing cars to different roads.</div>
+                    <div class="term-explain">💡 Example: Route support tickets to different teams based on priority: low, medium, high, urgent</div>
+                    <span class="tag">Logic</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Binary Data</div>
+                    <div class="term-desc">Files like images, PDFs, or documents stored in workflows. Not readable text, but actual file content.</div>
+                    <div class="term-explain">💡 Example: Download a PDF invoice, then email it as an attachment</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Execution ID</div>
+                    <div class="term-desc">Unique identifier for each workflow run. Like a receipt number - helps track and debug specific runs.</div>
+                    <div class="term-explain">💡 Example: Log errors with execution ID so you can find exactly which run failed</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Item Index</div>
+                    <div class="term-desc">The position number of each data item (0, 1, 2, etc.). Like row numbers in a spreadsheet.</div>
+                    <div class="term-explain">💡 Example: Add a sequence number to each invoice: Invoice #1, Invoice #2, etc.</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Paired Item</div>
+                    <div class="term-desc">Links data items across nodes to maintain relationships. Like keeping track of which output came from which input.</div>
+                    <div class="term-explain">💡 Example: When processing 10 orders, remember which email belongs to which order</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Gmail Node</div>
+                    <div class="term-desc">Send, receive, search, and manage Gmail messages directly from workflows.</div>
+                    <div class="term-explain">💡 Example: Auto-reply to emails with specific keywords, or save attachments to Google Drive</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Slack Node</div>
+                    <div class="term-desc">Send messages, create channels, manage users in Slack. Great for team notifications.</div>
+                    <div class="term-explain">💡 Example: Post to #sales channel whenever a new deal closes in your CRM</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Google Sheets Node</div>
+                    <div class="term-desc">Read, write, update, and delete data in Google Sheets. Turn spreadsheets into databases.</div>
+                    <div class="term-explain">💡 Example: Add new form submissions to a tracking sheet, or read product prices for emails</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Error Trigger</div>
+                    <div class="term-desc">Starts a separate workflow when any workflow fails. Your safety net for catching problems.</div>
+                    <div class="term-explain">💡 Example: When payment processing fails, notify admin on Slack and log to database</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Settings</div>
+                    <div class="term-desc">Configure timeout limits, error handling, execution order, and timezone for your automation.</div>
+                    <div class="term-explain">💡 Example: Set 2-minute timeout for API calls, so workflow doesn't hang forever</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Retry On Fail</div>
+                    <div class="term-desc">Automatically retry failed nodes multiple times before giving up. Handles temporary glitches.</div>
+                    <div class="term-explain">💡 Example: If API is down, retry 3 times with 1-minute gaps before sending error alert</div>
+                    <span class="tag">Logic</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Sub-workflow</div>
+                    <div class="term-desc">Call another workflow from inside your current workflow. Like using a function in programming - reuse logic.</div>
+                    <div class="term-explain">💡 Example: Create one "Send Welcome Email" workflow, call it from signup and trial workflows</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Sticky Note</div>
+                    <div class="term-desc">Add visual notes and comments to your workflow canvas. Documentation for you and your team.</div>
+                    <div class="term-explain">💡 Example: "⚠️ This section handles payment failures - don't modify without testing"</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Edit Fields (Set) Node</div>
+                    <div class="term-desc">Modify existing data fields - rename, remove, or keep only specific fields. Like choosing which columns to keep in Excel.</div>
+                    <div class="term-explain">💡 Example: Remove sensitive fields like SSN and password before sending data to analytics</div>
+                    <span class="tag">Data</span><span class="tag">Beginner</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Item Lists Node</div>
+                    <div class="term-desc">Split one item with an array into multiple items, or combine multiple items into one array.</div>
+                    <div class="term-explain">💡 Example: Convert one order with 5 products into 5 separate items for individual processing</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Aggregate Node</div>
+                    <div class="term-desc">Combine multiple items into summary data - count, sum, average, min, max. Like pivot tables in spreadsheets.</div>
+                    <div class="term-explain">💡 Example: From 100 sales records, get total revenue, average order value, and top product</div>
+                    <span class="tag">Data</span><span class="tag">Intermediate</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Compare Datasets Node</div>
+                    <div class="term-desc">Find differences between two lists - what's new, changed, or removed. Essential for sync workflows.</div>
+                    <div class="term-explain">💡 Example: Compare today's customer list vs yesterday's to find new signups and cancellations</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Remove Duplicates Node</div>
+                    <div class="term-desc">Eliminate duplicate entries based on specific fields. Keeps your data clean.</div>
+                    <div class="term-explain">💡 Example: Remove duplicate email addresses from a combined mailing list</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Sort Node</div>
+                    <div class="term-desc">Arrange items in order by any field - alphabetically, numerically, by date, ascending or descending.</div>
+                    <div class="term-explain">💡 Example: Sort customers by total_spent (highest first) to identify VIP customers</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Limit Node</div>
+                    <div class="term-desc">Take only the first N items or skip items. Like SQL LIMIT and OFFSET.</div>
+                    <div class="term-explain">💡 Example: Get top 10 products by sales, or skip first 50 items for pagination</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">HTML Extract Node</div>
+                    <div class="term-desc">Pull specific data from HTML pages using CSS selectors. Web scraping made easy.</div>
+                    <div class="term-explain">💡 Example: Extract all product prices from a competitor's website for price monitoring</div>
+                    <span class="tag">Data</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">XML Node</div>
+                    <div class="term-desc">Convert between XML and JSON formats. Many legacy APIs still use XML.</div>
+                    <div class="term-explain">💡 Example: Parse XML from SOAP API and convert to JSON for easier processing</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">RSS Feed Trigger</div>
+                    <div class="term-desc">Monitor RSS/Atom feeds and trigger when new items appear. Great for content monitoring.</div>
+                    <div class="term-explain">💡 Example: Auto-post to Slack whenever your favorite blog publishes new content</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Email Trigger (IMAP)</div>
+                    <div class="term-desc">Start workflows when emails arrive matching specific criteria (sender, subject, attachments).</div>
+                    <div class="term-explain">💡 Example: When email with "Invoice" subject arrives, download PDF and upload to accounting system</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Form Trigger</div>
+                    <div class="term-desc">Create embeddable web forms that trigger workflows on submission. No-code form builder.</div>
+                    <div class="term-explain">💡 Example: Build contact form, when submitted → add to CRM → send confirmation email</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">File Trigger</div>
+                    <div class="term-desc">Watch a folder and trigger when files are added, modified, or deleted.</div>
+                    <div class="term-explain">💡 Example: When CSV uploaded to Dropbox folder, import data to database automatically</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Airtable Node</div>
+                    <div class="term-desc">Read, create, update records in Airtable databases. Spreadsheet-database hybrid integration.</div>
+                    <div class="term-explain">💡 Example: Add new support tickets to Airtable, update status when resolved</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Notion Node</div>
+                    <div class="term-desc">Manage Notion pages, databases, and blocks. Perfect for team wikis and project management.</div>
+                    <div class="term-explain">💡 Example: Create Notion page for each new project with template structure</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Discord Node</div>
+                    <div class="term-desc">Send messages, manage channels, roles in Discord servers. Community automation.</div>
+                    <div class="term-explain">💡 Example: Post server status updates, welcome new members, moderate content</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Twitter/X Node</div>
+                    <div class="term-desc">Post tweets, search, monitor mentions, manage followers on X (Twitter).</div>
+                    <div class="term-explain">💡 Example: Auto-tweet blog posts, monitor brand mentions, DM new followers</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Stripe Node</div>
+                    <div class="term-desc">Process payments, manage customers, subscriptions, invoices via Stripe API.</div>
+                    <div class="term-explain">💡 Example: When payment succeeds → activate user account → send receipt email</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Twilio Node</div>
+                    <div class="term-desc">Send SMS, make phone calls, send WhatsApp messages programmatically.</div>
+                    <div class="term-explain">💡 Example: Send SMS alerts for critical errors, 2FA codes, appointment reminders</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">SendGrid Node</div>
+                    <div class="term-desc">Send transactional emails at scale. Better deliverability than regular email.</div>
+                    <div class="term-explain">💡 Example: Send password reset emails, order confirmations, newsletters</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Mailchimp Node</div>
+                    <div class="term-desc">Manage email lists, campaigns, automation in Mailchimp marketing platform.</div>
+                    <div class="term-explain">💡 Example: Add new customers to mailing list, tag based on purchase behavior</div>
+                    <span class="tag">Integration</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">OAuth2 Authentication</div>
+                    <div class="term-desc">Secure login method where you authorize n8n to access services without sharing passwords.</div>
+                    <div class="term-explain">💡 Example: Connect Google Drive - you login once, get token, n8n uses token forever</div>
+                    <span class="tag">Security</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">API Key Authentication</div>
+                    <div class="term-desc">Simple auth using secret key in request header. Most common for developer APIs.</div>
+                    <div class="term-explain">💡 Example: "X-API-Key: abc123xyz" sent with every request to verify identity</div>
+                    <span class="tag">Security</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Basic Auth</div>
+                    <div class="term-desc">Username and password encoded and sent with each request. Simple but less secure.</div>
+                    <div class="term-explain">💡 Example: Internal APIs, dev environments, legacy systems still use this</div>
+                    <span class="tag">Security</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Polling Trigger</div>
+                    <div class="term-desc">Checks API repeatedly (every X minutes) for new data. Alternative to webhooks.</div>
+                    <div class="term-explain">💡 Example: Check email inbox every 5 minutes for new messages (if no webhook available)</div>
+                    <span class="tag">Trigger</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Rate Limiting</div>
+                    <div class="term-desc">Automatic delays between requests to respect API limits. Prevents getting blocked.</div>
+                    <div class="term-explain">💡 Example: API allows 100 calls/hour, n8n spaces them out automatically</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Pagination</div>
+                    <div class="term-desc">Fetching large datasets in chunks (pages). Get 100 items at a time instead of all 10,000.</div>
+                    <div class="term-explain">💡 Example: Loop through pages: page 1, page 2, page 3 until no more data</div>
+                    <span class="tag">Data</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Queue Mode</div>
+                    <div class="term-desc">Process workflows one at a time in order, preventing parallel execution conflicts.</div>
+                    <div class="term-explain">💡 Example: Ensure database updates happen sequentially, not simultaneously causing errors</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Execution Timeout</div>
+                    <div class="term-desc">Max time workflow can run before automatic cancellation. Prevents infinite loops.</div>
+                    <div class="term-explain">💡 Example: Set 5-minute timeout - if workflow hangs, it stops automatically</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Variables</div>
+                    <div class="term-desc">Store values that persist across the entire workflow execution. Like global variables.</div>
+                    <div class="term-explain">💡 Example: Store API response in variable, use it in multiple later nodes</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Static Data</div>
+                    <div class="term-desc">Hardcoded reference data stored in workflow. Lookup tables, mappings, constants.</div>
+                    <div class="term-explain">💡 Example: Country code to country name mapping, status ID to status label</div>
+                    <span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Tags</div>
+                    <div class="term-desc">Labels to organize and categorize workflows. Search and filter by tags.</div>
+                    <div class="term-explain">💡 Example: Tag workflows as "production", "staging", "marketing", "finance"</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Templates</div>
+                    <div class="term-desc">Pre-built workflows you can copy and customize. Community shares hundreds of templates.</div>
+                    <div class="term-explain">💡 Example: Start with "Slack to Email" template, modify for your needs</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Import/Export Workflow</div>
+                    <div class="term-desc">Download workflow as JSON file to backup or share. Import others' workflows.</div>
+                    <div class="term-explain">💡 Example: Export for version control in Git, or share with team members</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Execution History</div>
+                    <div class="term-desc">Log of all workflow runs - see inputs, outputs, errors, timing for debugging.</div>
+                    <div class="term-explain">💡 Example: Check what data caused yesterday's failure, replay with same inputs</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Manual Execution</div>
+                    <div class="term-desc">Run workflow on-demand by clicking button. For testing or one-time tasks.</div>
+                    <div class="term-explain">💡 Example: Test new workflow before activating automatic trigger</div>
+                    <span class="tag">Core</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Async/Await Pattern</div>
+                    <div class="term-desc">Handle asynchronous operations in Code nodes. Wait for promises to resolve before continuing.</div>
+                    <div class="term-explain">💡 Example: await fetch() waits for API response before processing data</div>
+                    <span class="tag">Advanced</span><span class="tag">Code</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Promises</div>
+                    <div class="term-desc">Objects representing eventual completion/failure of async operations. Used for API calls, file operations.</div>
+                    <div class="term-explain">💡 Example: Promise.all() to run multiple API calls simultaneously and wait for all</div>
+                    <span class="tag">Advanced</span><span class="tag">Code</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Execution Context</div>
+                    <div class="term-desc">Information about current workflow run - execution ID, mode (manual/trigger), timezone, user.</div>
+                    <div class="term-explain">💡 Example: Use $executionId to create unique filenames or log entries</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">JSONata</div>
+                    <div class="term-desc">Powerful query language for transforming JSON data. More advanced than basic expressions.</div>
+                    <div class="term-explain">💡 Example: Extract nested data, perform calculations, reshape objects in one expression</div>
+                    <span class="tag">Advanced</span><span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">JMESPath</div>
+                    <div class="term-desc">Query language for JSON. Extract and transform data with concise syntax.</div>
+                    <div class="term-explain">💡 Example: items[?price > 100].name gets names of all items over $100</div>
+                    <span class="tag">Advanced</span><span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">HTTP Streaming</div>
+                    <div class="term-desc">Process large HTTP responses in chunks instead of loading entire response in memory.</div>
+                    <div class="term-explain">💡 Example: Download 1GB file chunk by chunk to avoid memory overflow</div>
+                    <span class="tag">Advanced</span><span class="tag">Performance</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">HMAC Validation</div>
+                    <div class="term-desc">Verify webhook authenticity using cryptographic signatures. Prevents fake requests.</div>
+                    <div class="term-explain">💡 Example: Stripe sends HMAC signature, you verify it matches before processing payment</div>
+                    <span class="tag">Security</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">IP Whitelisting</div>
+                    <div class="term-desc">Only accept webhook requests from specific IP addresses. Extra security layer.</div>
+                    <div class="term-explain">💡 Example: Only process webhooks from GitHub's known IP ranges</div>
+                    <span class="tag">Security</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">PostgreSQL Node</div>
+                    <div class="term-desc">Execute SQL queries, insert/update/delete data in PostgreSQL databases directly.</div>
+                    <div class="term-explain">💡 Example: SELECT customer data, UPDATE order status, INSERT new records</div>
+                    <span class="tag">Integration</span><span class="tag">Database</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">MySQL Node</div>
+                    <div class="term-desc">Connect to MySQL/MariaDB databases, run queries, manage data programmatically.</div>
+                    <div class="term-explain">💡 Example: Sync app data with MySQL backend, run reports, backup tables</div>
+                    <span class="tag">Integration</span><span class="tag">Database</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">MongoDB Node</div>
+                    <div class="term-desc">Work with MongoDB collections - find, insert, update, delete documents using NoSQL queries.</div>
+                    <div class="term-explain">💡 Example: Store JSON logs, user profiles, flexible schema data</div>
+                    <span class="tag">Integration</span><span class="tag">Database</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">AWS S3 Node</div>
+                    <div class="term-desc">Upload, download, list, delete files in Amazon S3 buckets. Cloud file storage.</div>
+                    <div class="term-explain">💡 Example: Backup files to S3, serve images from bucket, archive old data</div>
+                    <span class="tag">Integration</span><span class="tag">Cloud</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Redis Node</div>
+                    <div class="term-desc">In-memory data store for caching, session storage, pub/sub messaging.</div>
+                    <div class="term-explain">💡 Example: Cache API responses for 5 minutes, store rate limit counters</div>
+                    <span class="tag">Integration</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">JWT (JSON Web Tokens)</div>
+                    <div class="term-desc">Encoded tokens containing user info and expiration. Used for secure authentication.</div>
+                    <div class="term-explain">💡 Example: API returns JWT after login, include it in all subsequent requests</div>
+                    <span class="tag">Security</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Refresh Tokens</div>
+                    <div class="term-desc">Long-lived tokens used to obtain new access tokens when they expire. Prevents re-login.</div>
+                    <div class="term-explain">💡 Example: Access token expires after 1 hour, use refresh token to get new one</div>
+                    <span class="tag">Security</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">GraphQL Support</div>
+                    <div class="term-desc">Query language for APIs - request exactly the data you need, nothing more.</div>
+                    <div class="term-explain">💡 Example: Get user name + email in one request vs 2 REST calls</div>
+                    <span class="tag">Integration</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Cursor-Based Pagination</div>
+                    <div class="term-desc">Navigate large datasets using unique cursors instead of page numbers. More reliable.</div>
+                    <div class="term-explain">💡 Example: Use last item's ID as cursor to fetch next batch, handles data changes</div>
+                    <span class="tag">Advanced</span><span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Fan-out Pattern</div>
+                    <div class="term-desc">Split one input into multiple parallel paths for simultaneous processing. Then fan-in to combine.</div>
+                    <div class="term-explain">💡 Example: One order triggers 3 parallel tasks: charge card, update inventory, send email</div>
+                    <span class="tag">Pattern</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Circuit Breaker Pattern</div>
+                    <div class="term-desc">Stop calling failing services temporarily to prevent cascade failures. Auto-retry after cooldown.</div>
+                    <div class="term-explain">💡 Example: If API fails 5 times, stop trying for 5 minutes to let it recover</div>
+                    <span class="tag">Pattern</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Saga Pattern</div>
+                    <div class="term-desc">Manage distributed transactions across multiple services with compensation logic if anything fails.</div>
+                    <div class="term-explain">💡 Example: Book flight + hotel + car. If car fails, cancel flight and hotel automatically</div>
+                    <span class="tag">Pattern</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Idempotency</div>
+                    <div class="term-desc">Ensure operation produces same result even if called multiple times. Critical for reliability.</div>
+                    <div class="term-explain">💡 Example: Charge payment only once even if webhook delivered twice</div>
+                    <span class="tag">Advanced</span><span class="tag">Pattern</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Debouncing</div>
+                    <div class="term-desc">Delay action until input stops changing for specified time. Prevents excessive triggers.</div>
+                    <div class="term-explain">💡 Example: Search API called only after user stops typing for 500ms</div>
+                    <span class="tag">Performance</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Throttling</div>
+                    <div class="term-desc">Limit action frequency - execute at most once per time period. Rate limiting.</div>
+                    <div class="term-explain">💡 Example: Process webhook maximum once per second even if 100 arrive</div>
+                    <span class="tag">Performance</span><span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Dead Letter Queue</div>
+                    <div class="term-desc">Storage for messages/tasks that failed processing after all retries. Prevents data loss.</div>
+                    <div class="term-explain">💡 Example: Failed payments go to DLQ for manual review instead of disappearing</div>
+                    <span class="tag">Advanced</span><span class="tag">Pattern</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Webhook Response Customization</div>
+                    <div class="term-desc">Return custom status codes, headers, and body from webhook node. Control caller's behavior.</div>
+                    <div class="term-explain">💡 Example: Return 202 Accepted to acknowledge receipt, then process async</div>
+                    <span class="tag">Advanced</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Modules (npm)</div>
+                    <div class="term-desc">Import and use npm packages in Code nodes. Access millions of JavaScript libraries.</div>
+                    <div class="term-explain">💡 Example: Use moment.js for dates, lodash for data, axios for HTTP requests</div>
+                    <span class="tag">Advanced</span><span class="tag">Code</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Binary Data Processing</div>
+                    <div class="term-desc">Work with files, images, PDFs as binary data. Convert, manipulate, extract information.</div>
+                    <div class="term-explain">💡 Example: Resize images, extract text from PDFs, convert between formats</div>
+                    <span class="tag">Advanced</span><span class="tag">Data</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Testing Mode</div>
+                    <div class="term-desc">Run workflows with test data without affecting production. Safe environment for debugging.</div>
+                    <div class="term-explain">💡 Example: Test payment workflow with fake card numbers before going live</div>
+                    <span class="tag">Core</span><span class="tag">Testing</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Mock Data Generation</div>
+                    <div class="term-desc">Create realistic fake data for testing workflows. Avoid using production data.</div>
+                    <div class="term-explain">💡 Example: Generate 100 fake users with names, emails, addresses for testing</div>
+                    <span class="tag">Testing</span>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Workflow Versioning</div>
+                    <div class="term-desc">Track changes to workflows over time. Rollback to previous versions if needed.</div>
+                    <div class="term-explain">💡 Example: Save version before major changes, restore if new version breaks</div>
+                    <span class="tag">Core</span><span class="tag">Advanced</span>
+                </div>
+            </div>
+            
+            <!-- Samples Tab -->
+            <div id="samples" class="tab-content hidden">
+                <div class="term">
+                    <div class="term-title">Basic Webhook Receiver</div>
+                    <div class="term-desc">Receive POST data from external services</div>
+                    <div class="code-sample">
+// Webhook Node → Response
+Method: POST
+Path: /my-webhook
+Response: {{ $json }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Daily Scheduled Backup</div>
+                    <div class="term-desc">Run workflow every day at midnight</div>
+                    <div class="code-sample">
+// Cron Node
+Schedule: 0 0 * * *
+Timezone: UTC
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">API Data Fetch</div>
+                    <div class="term-desc">GET request with authentication</div>
+                    <div class="code-sample">
+// HTTP Request Node
+Method: GET
+URL: https://api.example.com/data
+Auth: Bearer Token
+Headers: {
+  "Authorization": "Bearer {{$credentials.token}}"
+}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Conditional Logic Flow</div>
+                    <div class="term-desc">Route data based on status field</div>
+                    <div class="code-sample">
+// IF Node
+Condition: {{ $json.status }} = "active"
+True Branch: Process active items
+False Branch: Archive inactive items
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Data Transformation</div>
+                    <div class="term-desc">Map and transform JSON structure</div>
+                    <div class="code-sample">
+// Code Node
+return items.map(item => ({
+  id: item.json.userId,
+  name: item.json.fullName.toUpperCase(),
+  created: new Date(item.json.timestamp)
+}));
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Error Handling Workflow</div>
+                    <div class="term-desc">Catch and log errors gracefully</div>
+                    <div class="code-sample">
+// Workflow Settings
+Error Workflow: enable
+On Error: Continue execution
+Log: Save to database
+Notify: Send to Slack
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Batch Processing</div>
+                    <div class="term-desc">Process 100 items at a time</div>
+                    <div class="code-sample">
+// Split In Batches Node
+Batch Size: 100
+Keep Input Data: true
+Reset: after all batches
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📧 Auto-Reply to Form Submissions</div>
+                    <div class="term-desc">When someone fills a contact form, automatically send them a thank-you email</div>
+                    <div class="term-explain">How it works: Webhook receives form → Set node adds timestamp → Gmail sends confirmation → Google Sheets logs the submission</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Set → Gmail → Sheets
+// 1. Webhook: receives POST with name, email, message
+// 2. Set Node: add field "received_at" = {{$now}}
+// 3. Gmail: send to {{$json.email}}
+//    Subject: "Thanks for contacting us!"
+//    Body: "Hi {{$json.name}}, we got your message"
+// 4. Google Sheets: append row with all data
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💾 Database to Spreadsheet Sync</div>
+                    <div class="term-desc">Every night at 2 AM, export database records to Google Sheets for reporting</div>
+                    <div class="term-explain">How it works: Schedule triggers → Fetch from database → Transform data → Clear old sheet → Write new data</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP Request → Code → Sheets
+// 1. Cron: 0 2 * * * (daily at 2 AM)
+// 2. HTTP Request: GET /api/customers
+//    Returns: [{id, name, email, total_spent}]
+// 3. Code Node: format for sheets
+//    return items.map(item => [
+//      item.json.id,
+//      item.json.name,
+//      item.json.email,
+//      '$' + item.json.total_spent
+//    ]);
+// 4. Google Sheets: clear then append rows
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔔 Slack Alert on High-Value Sales</div>
+                    <div class="term-desc">Notify #sales channel immediately when a deal over $10,000 closes</div>
+                    <div class="term-explain">How it works: Webhook from CRM → Check if amount > $10k → Send Slack message with deal details</div>
+                    <div class="code-sample">
+// Workflow: Webhook → IF → Slack
+// 1. Webhook: POST from Salesforce
+//    Data: {deal_name, amount, customer}
+// 2. IF Node: {{$json.amount}} > 10000
+// 3. Slack (True branch):
+//    Channel: #sales
+//    Message: "🎉 Big win! {{$json.customer}} 
+//             just closed for ${{$json.amount}}"
+// False branch: ends (no notification)
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📅 Weekly Report Generator</div>
+                    <div class="term-desc">Every Monday, compile last week's metrics and email to management</div>
+                    <div class="term-explain">How it works: Schedule triggers → Fetch metrics from 3 APIs → Merge data → Format as HTML → Email report</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP×3 → Merge → Function → Gmail
+// 1. Cron: 0 9 * * 1 (Mondays 9 AM)
+// 2. HTTP Request A: GET /api/sales/weekly
+// 3. HTTP Request B: GET /api/signups/weekly  
+// 4. HTTP Request C: GET /api/support/weekly
+// 5. Merge: combine all 3 responses
+// 6. Function: create HTML table
+//    return {html: '<table>...</table>'}
+// 7. Gmail: send to managers@company.com
+//    Body: {{$json.html}}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔄 Two-Way Data Sync</div>
+                    <div class="term-desc">Keep customer data synchronized between CRM and email marketing platform</div>
+                    <div class="term-explain">How it works: Runs every hour → Check for CRM updates → Update email platform → Check email platform → Update CRM</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → Loop → IF → HTTP
+// 1. Cron: 0 * * * * (every hour)
+// 2. HTTP: GET /crm/customers?updated_since=1h
+// 3. Loop Over Items: for each changed customer
+// 4. IF: email exists in marketing platform?
+//    True: PATCH /marketing/contact/{{id}}
+//    False: POST /marketing/contact (create new)
+// 5. Wait 5 minutes
+// 6. Reverse: check marketing → update CRM
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🖼️ Image Processing Pipeline</div>
+                    <div class="term-desc">When image uploaded to cloud storage, resize it and create thumbnail</div>
+                    <div class="term-explain">How it works: Storage webhook → Download image → Resize to 3 sizes → Upload all versions → Update database</div>
+                    <div class="code-sample">
+// Workflow: Webhook → HTTP → Code → HTTP×3
+// 1. Webhook: from AWS S3 bucket
+//    Data: {file_url, file_name}
+// 2. HTTP: GET {{$json.file_url}}
+//    Download binary data
+// 3. Code: resize image using sharp library
+//    sizes: thumbnail(150px), medium(800px), large(1920px)
+// 4. HTTP Request: POST each size to storage
+// 5. Database: UPDATE products 
+//    SET images = {thumb, med, large}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚠️ System Health Monitor</div>
+                    <div class="term-desc">Check website/API every 5 minutes, alert if down or slow</div>
+                    <div class="term-explain">How it works: Schedule pings → Measure response time → If > 3 seconds or error → Send urgent Slack alert</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → IF → Slack
+// 1. Cron: */5 * * * * (every 5 minutes)
+// 2. HTTP: GET https://myapp.com/health
+//    Timeout: 10 seconds
+//    Ignore SSL: false
+// 3. Set: response_time = {{$now - $json.start}}
+// 4. IF: response_time > 3000 OR status ≠ 200
+// 5. Slack (True):
+//    Channel: #alerts
+//    Message: "🚨 URGENT: Site is {{status}}
+//             Response: {{response_time}}ms"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📝 Invoice Generation Workflow</div>
+                    <div class="term-desc">Create PDF invoice from order data and email to customer</div>
+                    <div class="term-explain">How it works: Order webhook → Fetch customer details → Generate PDF from template → Save to storage → Email with attachment</div>
+                    <div class="code-sample">
+// Workflow: Webhook → HTTP → Function → PDF → Drive → Gmail
+// 1. Webhook: new order from Shopify
+//    Data: {order_id, items[], total, customer_id}
+// 2. HTTP: GET /api/customers/{{$json.customer_id}}
+// 3. Function: prepare invoice data
+//    invoice_number = 'INV-' + Date.now()
+//    line_items = format items as table
+// 4. PDF Node: generate from HTML template
+//    Template includes logo, items, total
+// 5. Google Drive: upload PDF
+// 6. Gmail: send with PDF attachment
+//    To: {{$node.HTTP.json.email}}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎯 Lead Scoring Automation</div>
+                    <div class="term-desc">Calculate lead score based on actions, update CRM, notify sales if hot lead</div>
+                    <div class="term-explain">How it works: Activity webhook → Calculate points → Update score in CRM → If score > 80 → Alert sales team</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Code → HTTP → IF → Slack
+// 1. Webhook: user activity events
+//    Events: page_view(+1), download(+10), 
+//            demo_request(+50), pricing_view(+20)
+// 2. Code: calculate total score
+//    score = activities.reduce((sum, act) => 
+//      sum + scoreMap[act.type], 0)
+// 3. HTTP: PATCH /crm/leads/{{$json.lead_id}}
+//    Body: {score: {{$json.score}}}
+// 4. IF: score >= 80
+// 5. Slack: "@sales-team Hot lead! 
+//           Score: {{$json.score}}"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 User Onboarding Sequence</div>
+                    <div class="term-desc">Multi-step email sequence triggered when user signs up</div>
+                    <div class="term-explain">How it works: Signup webhook → Send welcome email → Wait 1 day → Send tips → Wait 3 days → Send case study</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Gmail → Wait → Gmail → Wait → Gmail
+// 1. Webhook: new user signup
+//    Data: {email, name, signup_date}
+// 2. Gmail: "Welcome {{$json.name}}!"
+//    Body: account setup instructions
+// 3. Wait: 1 day
+// 4. Gmail: "5 Tips to Get Started"
+//    Body: feature highlights
+// 5. Wait: 3 days  
+// 6. Gmail: "See How Others Succeed"
+//    Body: customer success stories
+// 7. Set: tag user as "onboarded" in CRM
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🛒 Abandoned Cart Recovery</div>
+                    <div class="term-desc">Send reminder emails to customers who left items in cart without purchasing</div>
+                    <div class="term-explain">How it works: Schedule checks carts → Find abandoned > 1 hour → Send reminder with 10% discount code</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → Filter → Loop → SendGrid
+// 1. Cron: */30 * * * * (every 30 minutes)
+// 2. HTTP: GET /api/carts?status=abandoned
+// 3. Filter: where last_updated > 1 hour ago
+// 4. Loop Over Items: each abandoned cart
+// 5. IF: has customer email AND not reminded yet
+// 6. SendGrid: 
+//    To: {{$json.customer_email}}
+//    Subject: "You left items in your cart!"
+//    Body: "Complete purchase, get 10% off: CODE10"
+// 7. HTTP: PATCH /carts/{{id}} {reminded: true}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📦 Low Inventory Alert</div>
+                    <div class="term-desc">Monitor stock levels and alert warehouse when products run low</div>
+                    <div class="term-explain">How it works: Daily check → Find products with stock < threshold → Email purchasing team with reorder list</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → Filter → Aggregate → Gmail
+// 1. Cron: 0 8 * * * (daily at 8 AM)
+// 2. HTTP: GET /api/inventory/all
+// 3. Filter: quantity < reorder_point
+// 4. Aggregate: group by supplier
+// 5. Function: create HTML table
+//    headers: Product, Current, Needed, Supplier
+// 6. Gmail: send to purchasing@company.com
+//    Subject: "⚠️ Low Stock Alert - {{count}} items"
+//    Attachment: CSV of low stock items
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎯 Social Media Auto-Posting</div>
+                    <div class="term-desc">Publish new blog posts automatically to Twitter, LinkedIn, and Facebook</div>
+                    <div class="term-explain">How it works: RSS feed monitors blog → New post detected → Extract content → Post to all platforms with hashtags</div>
+                    <div class="code-sample">
+// Workflow: RSS → Set → Twitter → LinkedIn → Facebook
+// 1. RSS Trigger: check blog every 15 minutes
+// 2. Set: prepare post data
+//    title = {{$json.title}}
+//    url = {{$json.link}}
+//    hashtags = extract from categories
+// 3. Twitter: post tweet
+//    "📝 New post: {{title}} {{url}} {{hashtags}}"
+// 4. LinkedIn: create post (same content)
+// 5. Facebook: post to page
+// 6. Airtable: log published posts
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📊 Marketing Campaign Analytics</div>
+                    <div class="term-desc">Collect metrics from multiple platforms into one daily report</div>
+                    <div class="term-explain">How it works: Daily trigger → Fetch from Google Analytics, Facebook, Mailchimp → Merge → Create report → Save to Sheets</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP×3 → Merge → Function → Sheets
+// 1. Cron: 0 7 * * * (daily 7 AM)
+// 2. HTTP A: Google Analytics API
+//    Metrics: sessions, bounce_rate, conversions
+// 3. HTTP B: Facebook Ads API
+//    Metrics: impressions, clicks, spend
+// 4. HTTP C: Mailchimp API  
+//    Metrics: emails_sent, opens, clicks
+// 5. Merge: combine all metrics
+// 6. Function: calculate ROI, CTR, cost_per_conversion
+// 7. Google Sheets: append row with date + metrics
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">👥 Employee Onboarding Automation</div>
+                    <div class="term-desc">Set up new employee accounts, send welcome materials, assign tasks</div>
+                    <div class="term-explain">How it works: Form submission → Create accounts in all systems → Send credentials → Assign onboarding tasks → Notify team</div>
+                    <div class="code-sample">
+// Workflow: Form → HTTP×4 → Gmail → Notion → Slack
+// 1. Form Trigger: new employee details
+//    Data: name, email, department, start_date
+// 2. HTTP: POST /api/users/create (main system)
+// 3. HTTP: POST /gsuite/users (create Gmail)
+// 4. HTTP: POST /slack/users (create Slack)
+// 5. HTTP: POST /notion/users (add to workspace)
+// 6. Gmail: send welcome email with credentials
+// 7. Notion: create onboarding checklist page
+// 8. Slack: post to #hr channel
+//    "Welcome {{name}} starting {{start_date}}!"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⏰ Timesheet Reminder System</div>
+                    <div class="term-desc">Remind employees to submit timesheets every Friday, escalate if not done by Monday</div>
+                    <div class="term-explain">How it works: Friday reminder → Check Monday who submitted → Send escalation to managers for missing timesheets</div>
+                    <div class="code-sample">
+// Workflow 1 (Friday): Cron → HTTP → Loop → Slack
+// 1. Cron: 0 16 * * 5 (Fridays 4 PM)
+// 2. HTTP: GET /api/employees/active
+// 3. Loop Over Items: each employee
+// 4. Slack: DM each employee
+//    "⏰ Don't forget to submit your timesheet!"
+
+// Workflow 2 (Monday): Cron → HTTP → Filter → Aggregate → Gmail
+// 1. Cron: 0 10 * * 1 (Mondays 10 AM)
+// 2. HTTP: GET /api/timesheets/pending
+// 3. Filter: not submitted for last week
+// 4. Aggregate: group by manager
+// 5. Gmail: email each manager
+//    "Missing timesheets from: {{employee_list}}"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💰 Expense Approval Workflow</div>
+                    <div class="term-desc">Route expense submissions for approval based on amount and category</div>
+                    <div class="term-explain">How it works: Form submitted → Route to manager if <$500, director if <$5000, CFO if higher → Notify decision → Update accounting</div>
+                    <div class="code-sample">
+// Workflow: Form → Switch → Slack → Wait → HTTP
+// 1. Form Trigger: expense submission
+//    Data: amount, category, description, receipt
+// 2. Switch Node: route by amount
+//    Case 1: amount < 500 → manager approval
+//    Case 2: amount < 5000 → director approval
+//    Case 3: amount >= 5000 → CFO approval
+// 3. Slack: send approval request with buttons
+//    "Approve expense? Amount: ${{amount}}"
+// 4. Wait for Webhook: approval decision
+// 5. IF approved:
+//    HTTP: POST to accounting system
+//    Gmail: notify employee "Approved!"
+// 6. IF rejected: Gmail with reason
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🧾 Invoice Payment Tracking</div>
+                    <div class="term-desc">Send payment reminders for overdue invoices, escalate after 30 days</div>
+                    <div class="term-explain">How it works: Daily check → Find overdue invoices → Send reminder → If 30+ days, add late fee and escalate to collections</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → Filter → Switch → Gmail/Twilio
+// 1. Cron: 0 9 * * * (daily 9 AM)
+// 2. HTTP: GET /api/invoices?status=unpaid
+// 3. Filter: due_date < today
+// 4. Switch: route by days overdue
+//    Case 1 (1-15 days): friendly reminder email
+//    Case 2 (16-30 days): urgent email + SMS
+//    Case 3 (30+ days): add 5% late fee + collections
+// 5a. Gmail: gentle reminder
+// 5b. Gmail + Twilio SMS: urgent payment needed
+// 5c. HTTP: POST /invoices/{{id}}/late_fee
+//     Notion: add to collections queue
+//     Gmail: final notice before legal action
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🚀 Deployment Notification System</div>
+                    <div class="term-desc">Notify team when code deploys, monitor for errors, rollback if needed</div>
+                    <div class="term-explain">How it works: GitHub webhook → Slack notification → Wait 5 min → Check error rate → If errors spike, trigger rollback</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Slack → Wait → HTTP → IF → Slack
+// 1. Webhook: from GitHub Actions
+//    Data: {branch, commit, deployer, environment}
+// 2. Slack: #deployments channel
+//    "🚀 Deploy to {{env}} by {{deployer}}
+//     Commit: {{commit}}"
+// 3. Wait: 5 minutes (monitoring period)
+// 4. HTTP: GET /api/metrics/errors
+//    Last 5 minutes error count
+// 5. IF: error_count > threshold (e.g., 50)
+// 6a. (True) Slack: "@channel 🚨 DEPLOY ISSUE!"
+//     HTTP: POST /api/rollback
+//     Slack: "Rolled back to previous version"
+// 6b. (False) Slack: "✅ Deploy successful, no issues"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📈 Status Page Auto-Update</div>
+                    <div class="term-desc">Monitor services and auto-update status page when issues detected</div>
+                    <div class="term-explain">How it works: Every minute ping services → If any down → Update status page → Post incident → Alert team → Keep monitoring</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP×5 → IF → HTTP → Slack
+// 1. Cron: * * * * * (every minute)
+// 2. HTTP: health checks for all services
+//    - API: GET /api/health
+//    - Website: GET /
+//    - Database: query test
+//    - Payment: Stripe API ping
+// 3. Aggregate: check all responses
+// 4. IF: any service down OR response > 5 sec
+// 5. HTTP: POST statuspage.io/incidents
+//    Status: "investigating"
+//    Message: "{{service_name}} experiencing issues"
+// 6. Slack: #incidents channel
+//    "@oncall {{service}} is down! Investigating..."
+// 7. Loop: keep checking every 30 sec until resolved
+// 8. When resolved: update incident, notify team
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎫 Support Ticket Auto-Routing</div>
+                    <div class="term-desc">Analyze support tickets and route to correct team based on content and priority</div>
+                    <div class="term-explain">How it works: Email received → Extract priority/category → Assign to team → Create ticket in system → Notify assignee</div>
+                    <div class="code-sample">
+// Workflow: Email Trigger → Function → Switch → HTTP → Slack
+// 1. Email Trigger: support@company.com
+// 2. Function: analyze content
+//    priority = subject.includes("URGENT") ? "high" : "normal"
+//    category = keywords (billing/technical/account)
+// 3. Switch: route by category
+//    billing → finance team
+//    technical → engineering  
+//    account → customer success
+// 4. HTTP: POST /helpdesk/tickets
+//    Create ticket with priority, assignment
+// 5. Slack: DM assigned team member
+//    "New {{priority}} ticket #{{id}}: {{subject}}"
+// 6. Gmail: auto-reply to customer
+//    "Ticket #{{id}} created, expect response in 24h"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">😊 Customer Satisfaction Survey</div>
+                    <div class="term-desc">Send NPS survey after support ticket resolved, analyze responses</div>
+                    <div class="term-explain">How it works: Ticket closed → Wait 1 hour → Send survey → Collect rating → If low score alert manager → Store in analytics</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Wait → SendGrid → Webhook → IF → Sheets
+// 1. Webhook: ticket status changed to "resolved"
+//    Data: {ticket_id, customer_email, agent}
+// 2. Wait: 1 hour (let them cool down)
+// 3. SendGrid: send survey email
+//    "How satisfied are you? Rate 1-10"
+//    Link: /survey/{{ticket_id}}
+// 4. Form Webhook: survey submission
+//    Rating, feedback text
+// 5. IF: rating <= 6 (detractor)
+//    Slack: alert support manager
+//    "⚠️ Low NPS from {{customer}}: {{rating}}/10"
+// 6. Google Sheets: log all responses
+//    Calculate weekly average NPS
+// 7. Airtable: update customer record with NPS
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔍 Competitor Price Monitor</div>
+                    <div class="term-desc">Scrape competitor websites daily, alert if they undercut your prices</div>
+                    <div class="term-explain">How it works: Schedule runs → Scrape competitor sites → Compare to your prices → If cheaper alert pricing team</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → HTML Extract → Compare → Slack
+// 1. Cron: 0 6 * * * (daily 6 AM)
+// 2. Loop: for each competitor URL
+// 3. HTTP: GET competitor product page
+// 4. HTML Extract: find price using CSS selector
+//    .product-price, #price, [data-price]
+// 5. Set: clean price (remove $, commas)
+//    competitor_price = parseFloat(price)
+// 6. HTTP: GET /api/products/{{sku}}
+//    our_price = our product price
+// 7. IF: competitor_price < (our_price * 0.95)
+// 8. Slack: #pricing channel
+//    "⚠️ {{competitor}} undercut us!
+//     Their price: ${{competitor_price}}
+//     Our price: ${{our_price}}"
+// 9. Google Sheets: log price history
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔄 CRM to Marketing Platform Sync</div>
+                    <div class="term-desc">Keep contact tags and segments synchronized between Salesforce and Mailchimp</div>
+                    <div class="term-explain">How it works: Hourly check for CRM updates → Compare with email platform → Update tags/segments → Handle unsubscribes both ways</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP×2 → Compare → Loop → HTTP
+// 1. Cron: 0 * * * * (hourly)
+// 2. HTTP A: Salesforce query
+//    GET contacts updated in last hour
+//    Fields: email, tags, segments, status
+// 3. HTTP B: Mailchimp API
+//    GET members by email list
+// 4. Compare Datasets: find differences
+//    Match on: email address
+//    Compare: tags, segments
+// 5. Loop: for each changed contact
+// 6. Switch: by change type
+//    New in CRM → add to Mailchimp
+//    Tags changed → update Mailchimp tags
+//    Unsubscribed → sync both platforms
+//    Deleted → remove from Mailchimp
+// 7. Log: save sync results to database
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎁 Birthday Email Campaign</div>
+                    <div class="term-desc">Send personalized birthday emails with discount codes automatically</div>
+                    <div class="term-explain">How it works: Daily check birthdays → Generate unique codes → Send email → Track who redeems → Send reminder if unused</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP → Filter → Loop → Function → Gmail
+// 1. Cron: 0 8 * * * (daily 8 AM)
+// 2. HTTP: GET /api/customers/all
+// 3. Filter: where birthday matches today (MM-DD)
+// 4. Loop Over Items: each birthday person
+// 5. Function: generate unique discount code
+//    code = 'BDAY-' + name.substring(0,4).toUpperCase() 
+//           + '-' + Math.random().toString(36).slice(2,8)
+// 6. HTTP: POST /api/coupons/create
+//    Code: {{code}}, discount: 20%, expires: 7 days
+// 7. Gmail: personalized email
+//    Subject: "Happy Birthday {{name}}! 🎉"
+//    Body: "Enjoy 20% off with code {{code}}"
+// 8. Wait: 6 days
+// 9. Check if code used, if not send reminder
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 Security Incident Response</div>
+                    <div class="term-desc">Detect suspicious activity, auto-block, notify security team, create incident ticket</div>
+                    <div class="term-explain">How it works: Security tool webhook → Analyze threat level → If critical auto-block IP → Create incident → Page on-call engineer</div>
+                    <div class="code-sample">
+// Workflow: Webhook → IF → HTTP×3 → Slack → Twilio
+// 1. Webhook: from security monitoring tool
+//    Data: {event_type, ip_address, severity, details}
+// 2. IF: severity === "critical"
+// 3. HTTP A: POST /firewall/block
+//    Block IP immediately
+// 4. HTTP B: POST /jira/issue
+//    Create security incident ticket
+//    Priority: Critical, Assignee: security-team
+// 5. HTTP C: POST /api/users/{{user_id}}/lock
+//    Lock affected user account
+// 6. Slack: #security-incidents channel
+//    "@channel 🚨 CRITICAL SECURITY EVENT
+//     Type: {{event_type}}
+//     IP: {{ip_address}} (BLOCKED)
+//     Ticket: {{jira_id}}"
+// 7. Twilio: SMS to on-call engineer
+//    "Security incident {{jira_id}} requires immediate attention"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔄 Multi-Step API Orchestration with Recovery</div>
+                    <div class="term-desc">Call multiple APIs in sequence with automatic error recovery and compensation</div>
+                    <div class="term-explain">How it works: Step 1 succeeds → Step 2 → Step 3 → If any fails, compensate previous steps (Saga pattern)</div>
+                    <div class="code-sample">
+// Workflow: Webhook → HTTP×3 with error handlers
+// 1. Webhook: create order request
+// 2. HTTP A: Reserve inventory
+//    POST /inventory/reserve {sku, quantity}
+//    SAVE: reservation_id
+// 3. Error Handler A: if fails, return error immediately
+// 4. HTTP B: Charge payment
+//    POST /payments/charge {amount, card}
+//    SAVE: payment_id
+// 5. Error Handler B: if fails
+//    → HTTP: POST /inventory/release {reservation_id}
+//    → Return payment error
+// 6. HTTP C: Create shipment
+//    POST /shipping/create {order_items}
+// 7. Error Handler C: if fails
+//    → HTTP: POST /payments/refund {payment_id}
+//    → HTTP: POST /inventory/release {reservation_id}
+//    → Return shipping error
+// 8. Success: Return order confirmation
+// This ensures consistent state even if any step fails
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📊 Real-Time Data Streaming Pipeline</div>
+                    <div class="term-desc">Process continuous data stream with windowing, aggregation, and alerting</div>
+                    <div class="term-explain">How it works: Events stream in → Buffer into 1-minute windows → Aggregate → Detect anomalies → Alert if threshold exceeded</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Redis → Cron → Aggregate → IF → Slack
+// 1. Webhook: continuous event stream (high frequency)
+//    Data: {user_id, event_type, value, timestamp}
+// 2. Redis: RPUSH to time-series list
+//    Key: "events:{{timestamp_minute}}"
+//    Expire: 1 hour
+// 3. Cron: */1 * * * * (every minute - processor)
+// 4. Redis: LRANGE get last minute's events
+//    LRANGE "events:{{last_minute}}" 0 -1
+// 5. Aggregate Node: calculate metrics
+//    total_events = count
+//    avg_value = average
+//    unique_users = distinct count
+//    top_events = group by type
+// 6. Code: detect anomalies
+//    if (total_events > baseline * 2) alert = true
+//    if (avg_value > threshold) alert = true
+// 7. IF: alert === true
+// 8. Slack: #monitoring channel
+//    "⚠️ Anomaly detected!
+//     Events: {{total_events}} (2x normal)
+//     Avg: {{avg_value}}"
+// 9. PostgreSQL: INSERT metrics for historical analysis
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🏗️ Complex ETL Pipeline with Validation</div>
+                    <div class="term-desc">Extract from multiple sources, transform with validation, load to warehouse</div>
+                    <div class="term-explain">How it works: Extract from 3 sources → Validate schema → Transform & enrich → Validate quality → Load to warehouse → Log results</div>
+                    <div class="code-sample">
+// Workflow: Cron → HTTP×3 → Merge → Validate → Transform → Load
+// 1. Cron: 0 2 * * * (2 AM daily)
+// 2. HTTP A: Extract from CRM API
+//    GET /api/customers?updated_since=24h
+// 3. HTTP B: Extract from orders database
+//    SQL: SELECT * FROM orders WHERE date > NOW() - INTERVAL 1 DAY
+// 4. HTTP C: Extract from analytics
+//    GET /api/events?date=yesterday
+// 5. Merge: Join datasets on customer_id
+// 6. Function: Schema validation
+//    Check required fields exist
+//    Check data types correct
+//    Flag invalid records
+// 7. IF: validation errors exist
+//    → Slack: alert data team
+//    → Continue with valid records only
+// 8. Function: Transform & enrich
+//    Calculate: lifetime_value, churn_risk, segment
+//    Enrich: geo data from IP, device info
+//    Normalize: standardize formats
+// 9. Function: Data quality checks
+//    Detect: duplicates, outliers, missing values
+//    Calculate: completeness score
+// 10. PostgreSQL: Load to warehouse
+//     UPSERT INTO customers_warehouse
+//     Handle conflicts on customer_id
+// 11. HTTP: Update metadata table
+//     Record: rows processed, errors, quality score
+// 12. Gmail: Send daily ETL report to data team
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚡ Event-Driven Microservices Communication</div>
+                    <div class="term-desc">Services publish events, subscribers react automatically - loosely coupled architecture</div>
+                    <div class="term-explain">How it works: Service A publishes event → n8n routes to multiple subscribers → Each subscriber processes independently</div>
+                    <div class="code-sample">
+// Publisher Workflow: Webhook → Redis Pub/Sub
+// 1. Webhook: /events/publish
+//    Data: {event_type, payload, timestamp}
+// 2. Redis: PUBLISH to channel
+//    Channel: "events:{{event_type}}"
+//    Message: JSON.stringify(payload)
+
+// Subscriber Workflows (multiple, one per service):
+// User Service Subscriber:
+// 1. Redis Trigger: SUBSCRIBE "events:user.*"
+// 2. Switch: route by event_type
+//    user.created → create welcome email
+//    user.updated → sync to CRM
+//    user.deleted → anonymize data
+// 3. Execute appropriate workflow
+
+// Order Service Subscriber:
+// 1. Redis Trigger: SUBSCRIBE "events:order.*"
+// 2. Switch: route by event_type
+//    order.created → reserve inventory
+//    order.paid → trigger fulfillment
+//    order.shipped → send tracking email
+//    order.cancelled → release inventory + refund
+
+// Analytics Service Subscriber:
+// 1. Redis Trigger: SUBSCRIBE "events:*"
+// 2. Function: transform for analytics
+// 3. PostgreSQL: INSERT into events table
+// 4. If high-value event → real-time dashboard update
+
+// Benefits: Services don't know about each other
+// Add new subscribers without changing publishers
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔒 Distributed Transaction with 2PC</div>
+                    <div class="term-desc">Two-Phase Commit pattern for atomic operations across multiple databases</div>
+                    <div class="term-explain">How it works: Phase 1 prepare all → Phase 2 commit all or rollback all - ensures consistency</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Prepare Phase → Commit Phase
+// 1. Webhook: transfer funds between accounts
+//    Data: {from_account, to_account, amount}
+// 2. Set: transaction_id = UUID()
+//    status = "preparing"
+// 
+// PHASE 1: PREPARE
+// 3. HTTP A: Prepare withdrawal
+//    POST /db1/prepare
+//    Body: {transaction_id, account: from, amount: -amount}
+//    Response: {prepared: true/false}
+// 4. HTTP B: Prepare deposit  
+//    POST /db2/prepare
+//    Body: {transaction_id, account: to, amount: +amount}
+//    Response: {prepared: true/false}
+// 5. IF: both prepared === true
+//    GOTO Phase 2
+//    ELSE: GOTO Rollback
+//
+// PHASE 2: COMMIT
+// 6. HTTP A: Commit withdrawal
+//    POST /db1/commit {transaction_id}
+// 7. HTTP B: Commit deposit
+//    POST /db2/commit {transaction_id}
+// 8. PostgreSQL: Log transaction success
+// 9. Return: success response
+//
+// ROLLBACK (if prepare failed):
+// 6. HTTP A: Rollback db1
+//    POST /db1/rollback {transaction_id}
+// 7. HTTP B: Rollback db2
+//    POST /db2/rollback {transaction_id}
+// 8. Return: failure with reason
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎯 Rate-Limited Bulk Processing</div>
+                    <div class="term-desc">Process thousands of items respecting API rate limits without failures</div>
+                    <div class="term-explain">How it works: Split into batches → Process with delays → Track progress → Resume on failure</div>
+                    <div class="code-sample">
+// Workflow: Manual/Cron → Split → Loop with Rate Limit
+// 1. Trigger: Start bulk job
+//    Input: 10,000 records to process
+// 2. PostgreSQL: Save job state
+//    INSERT INTO jobs {id, total: 10000, processed: 0}
+// 3. Split In Batches: 50 items per batch
+//    Total batches: 200
+// 4. Loop: For each batch
+//    a. Redis: Check rate limit
+//       Key: "api_calls:{{minute}}"
+//       If count >= 100: wait until next minute
+//    b. Loop: For each item in batch (50 items)
+//       - HTTP: Process item
+//       - Redis: INCR "api_calls:{{minute}}"
+//       - PostgreSQL: UPDATE jobs SET processed = processed + 1
+//    c. Wait: 100ms between items (max 10/sec)
+//    d. Wait: 1 second between batches
+// 5. Error Handler: On failure
+//    - PostgreSQL: UPDATE jobs SET status = 'failed', error = ...
+//    - Slack: Alert with resume instructions
+//    - Save: Last successful item index
+// 6. Resume capability:
+//    - Read processed count from database
+//    - Skip already processed items
+//    - Continue from where it failed
+// 7. Success: PostgreSQL UPDATE jobs SET status = 'completed'
+// 8. Gmail: Send completion report
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔁 Idempotent Payment Processing</div>
+                    <div class="term-desc">Ensure payments are charged exactly once even with retry/duplicate webhooks</div>
+                    <div class="term-explain">How it works: Check if already processed → If not, process and mark → Return same result for duplicates</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Check Idempotency → Process → Store Result
+// 1. Webhook: Payment intent from Stripe
+//    Data: {payment_intent_id, amount, customer}
+// 2. PostgreSQL: Check if already processed
+//    SELECT * FROM processed_payments 
+//    WHERE payment_intent_id = {{id}}
+// 3. IF: record exists (duplicate webhook)
+//    → Return stored result from database
+//    → Exit workflow (idempotent response)
+// 4. IF: new payment (not in database)
+//    → Continue processing
+// 5. PostgreSQL: Insert placeholder (prevent race condition)
+//    INSERT INTO processed_payments
+//    {payment_intent_id, status: 'processing', created_at}
+//    Use ON CONFLICT DO NOTHING
+// 6. IF: Insert failed (race condition - another instance processing)
+//    → Wait 1 second
+//    → Query result again
+//    → Return stored result
+// 7. Process payment:
+//    a. HTTP: Charge customer
+//       POST /payments/charge
+//    b. HTTP: Update inventory
+//    c. HTTP: Create invoice
+//    d. SendGrid: Send receipt
+// 8. PostgreSQL: Update record with result
+//    UPDATE processed_payments 
+//    SET status='completed', result={{json}}, updated_at=NOW()
+//    WHERE payment_intent_id = {{id}}
+// 9. Return: Success response
+// 10. Cache result in Redis (24h) for faster lookup
+//     SET "payment:{{id}}" {{result}} EX 86400
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🌊 Fan-Out/Fan-In Parallel Processing</div>
+                    <div class="term-desc">Split work across parallel paths, then merge results when all complete</div>
+                    <div class="term-explain">How it works: One input → 5 parallel APIs → Wait for all → Merge results → Continue</div>
+                    <div class="code-sample">
+// Workflow: Webhook → Fan-Out → Parallel Processing → Fan-In
+// 1. Webhook: Enrich user profile request
+//    Input: {user_id, email}
+// 2. Set: Store initial data
+//    correlation_id = UUID()
+// 
+// FAN-OUT (Parallel branches):
+// Branch A: Get social data
+//    HTTP: GET /linkedin/profile/{{email}}
+// Branch B: Get credit score
+//    HTTP: GET /creditbureau/score/{{user_id}}
+// Branch C: Get location data
+//    HTTP: GET /geocoding/lookup/{{ip_address}}
+// Branch D: Get company info
+//    HTTP: GET /clearbit/company/{{email_domain}}
+// Branch E: Get purchase history
+//    PostgreSQL: SELECT * FROM orders WHERE user_id={{id}}
+//
+// FAN-IN (Wait for all, then merge):
+// 3. Merge Node: Combine all branches
+//    Mode: Wait for all inputs
+//    Match on: correlation_id
+// 4. Function: Merge all data
+//    enriched_profile = {
+//      ...original_data,
+//      social: Branch A result,
+//      credit_score: Branch B result,
+//      location: Branch C result,
+//      company: Branch D result,
+//      purchase_history: Branch E result,
+//      enriched_at: NOW()
+//    }
+// 5. PostgreSQL: Save enriched profile
+//    UPSERT INTO enriched_users
+// 6. Return: Complete enriched data
+// 
+// Error handling: If any branch fails, continue with partial data
+// Timeout: If branch takes >5 sec, skip and continue
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🛡️ Circuit Breaker Implementation</div>
+                    <div class="term-desc">Protect system from cascading failures by stopping calls to failing services</div>
+                    <div class="term-explain">How it works: Track failures → Open circuit after threshold → Try again after cooldown → Close if successful</div>
+                    <div class="code-sample">
+// Workflow: API Call with Circuit Breaker
+// 1. Input: API request to external service
+// 2. Redis: Get circuit state
+//    GET "circuit:{{service_name}}"
+//    States: CLOSED (normal), OPEN (failing), HALF_OPEN (testing)
+// 
+// 3. IF: state === "OPEN"
+//    → Check: time since opened > cooldown (5 min)?
+//      → YES: Set state = "HALF_OPEN" (try again)
+//      → NO: Return error immediately (fail fast)
+//
+// 4. IF: state === "HALF_OPEN" or "CLOSED"
+//    → Attempt API call
+//    → HTTP: GET external service
+//
+// 5. Success Handler:
+//    → Redis: SET "circuit:{{service}}:failures" 0
+//    → Redis: SET "circuit:{{service}}" "CLOSED"
+//    → Return: API response
+//
+// 6. Error Handler:
+//    → Redis: INCR "circuit:{{service}}:failures"
+//    → Get failure count
+//    → IF: failures >= threshold (5)
+//      → Redis: SET "circuit:{{service}}" "OPEN"
+//      → Redis: SET "circuit:{{service}}:opened_at" {{NOW}}
+//      → Slack: Alert team - circuit opened
+//    → Return: Error with circuit state
+//
+// 7. Metrics tracking:
+//    → Redis: INCR "circuit:{{service}}:total_calls"
+//    → Redis: INCR "circuit:{{service}}:{{result}}_count"
+//    → Calculate: success_rate = success / total
+//
+// Benefits:
+// - Prevents hammering failed service
+// - System degrades gracefully
+// - Automatic recovery testing
+// - Fast failure for users (no long timeouts)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expressions Tab -->
+            <div id="expressions" class="tab-content hidden">
+                <div class="term">
+                    <div class="term-title">Access Previous Node Data</div>
+                    <div class="code-sample">
+{{ $json.fieldName }}
+{{ $json["field-with-dashes"] }}
+{{ $json.nested.property }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Access Specific Node</div>
+                    <div class="code-sample">
+{{ $node["NodeName"].json.data }}
+{{ $node["HTTP Request"].json[0].id }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">String Manipulation</div>
+                    <div class="code-sample">
+{{ $json.name.toLowerCase() }}
+{{ $json.text.toUpperCase() }}
+{{ $json.url.split("/").pop() }}
+{{ $json.email.includes("@gmail") }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Date/Time Functions</div>
+                    <div class="code-sample">
+{{ $now }}
+{{ $today }}
+{{ new Date().toISOString() }}
+{{ DateTime.now().minus({days: 7}) }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Array Operations</div>
+                    <div class="code-sample">
+{{ $json.items.length }}
+{{ $json.items[0].name }}
+{{ $json.items.map(i => i.id).join(",") }}
+{{ $json.items.filter(i => i.active) }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Conditional Expressions</div>
+                    <div class="code-sample">
+{{ $json.age > 18 ? "adult" : "minor" }}
+{{ $json.status === "active" && $json.verified }}
+{{ $json.price || 0 }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Math Operations</div>
+                    <div class="code-sample">
+{{ $json.quantity * $json.price }}
+{{ Math.round($json.value * 100) / 100 }}
+{{ Math.max(...$json.scores) }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">Environment Variables</div>
+                    <div class="code-sample">
+{{ $env.API_KEY }}
+{{ $env.DATABASE_URL }}
+{{ $vars.customVariable }}
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔍 JSON Parsing & Formatting</div>
+                    <div class="term-explain">Convert between text and data objects</div>
+                    <div class="code-sample">
+// Parse text into object
+{{ JSON.parse($json.textData) }}
+// What it does: Turn '{"name":"John"}' into actual data
+
+// Convert object to text  
+{{ JSON.stringify($json.userData) }}
+// What it does: Turn data into text for storage
+
+// Pretty print with indentation
+{{ JSON.stringify($json.data, null, 2) }}
+// What it does: Make JSON readable with spacing
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">✅ Handling Null & Undefined</div>
+                    <div class="term-explain">Safely work with missing or empty data</div>
+                    <div class="code-sample">
+// Provide default if missing
+{{ $json.username || "Anonymous" }}
+// What it does: Use "Anonymous" if username is empty
+
+// Null coalescing (safer)
+{{ $json.price ?? 0 }}
+// What it does: Use 0 only if price is null/undefined
+
+// Check if exists before using
+{{ $json.user?.address?.city }}
+// What it does: Won't crash if user or address is missing
+
+// Conditional assignment
+{{ $json.status ? $json.status : "pending" }}
+// What it does: If status exists use it, else "pending"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💰 Currency & Number Formatting</div>
+                    <div class="term-explain">Display numbers as money, percentages, or with proper separators</div>
+                    <div class="code-sample">
+// Format as US currency
+{{ Number($json.amount).toLocaleString('en-US', {
+  style: 'currency', currency: 'USD'
+}) }}
+// What it does: 1234.56 → "$1,234.56"
+
+// Round to 2 decimals
+{{ Math.round($json.price * 100) / 100 }}
+// What it does: 19.999 → 19.99
+
+// Percentage
+{{ ($json.completed / $json.total * 100).toFixed(1) + '%' }}
+// What it does: 45/100 → "45.0%"
+
+// Add commas to large numbers
+{{ $json.views.toLocaleString() }}
+// What it does: 1234567 → "1,234,567"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔤 Advanced String Operations</div>
+                    <div class="term-explain">Text manipulation and formatting</div>
+                    <div class="code-sample">
+// Extract part of text
+{{ $json.email.substring(0, $json.email.indexOf('@')) }}
+// What it does: "john@example.com" → "john"
+
+// Replace all occurrences
+{{ $json.text.replaceAll(' ', '-') }}
+// What it does: "hello world" → "hello-world"
+
+// Title case
+{{ $json.name.split(' ').map(w => 
+  w[0].toUpperCase() + w.slice(1).toLowerCase()
+).join(' ') }}
+// What it does: "john SMITH" → "John Smith"
+
+// Truncate with ellipsis
+{{ $json.description.length > 50 ? 
+  $json.description.substring(0, 47) + '...' : 
+  $json.description }}
+// What it does: Shorten long text to 50 chars
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📅 Advanced Date Operations</div>
+                    <div class="term-explain">Work with dates, times, and durations</div>
+                    <div class="code-sample">
+// Days between two dates
+{{ Math.floor((new Date($json.end) - 
+  new Date($json.start)) / 86400000) }}
+// What it does: Returns number of days difference
+
+// Format date nicely
+{{ new Date($json.timestamp).toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric'
+}) }}
+// What it does: "2026-02-04" → "February 4, 2026"
+
+// Start of day (midnight)
+{{ new Date($json.date).setHours(0,0,0,0) }}
+// What it does: "2026-02-04 14:30" → "2026-02-04 00:00"
+
+// Add 30 days to today
+{{ new Date(Date.now() + 30*24*60*60*1000).toISOString() }}
+// What it does: Calculate date 30 days from now
+
+// Day of week
+{{ ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+  [new Date($json.date).getDay()] }}
+// What it does: "2026-02-04" → "Wed"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎨 Regular Expressions (Regex)</div>
+                    <div class="term-explain">Pattern matching for complex text searching</div>
+                    <div class="code-sample">
+// Extract email from text
+{{ $json.text.match(/[\w.-]+@[\w.-]+\.\w+/)[0] }}
+// What it does: Find email in "Contact: john@example.com"
+
+// Validate phone number
+{{ /^\d{3}-\d{3}-\d{4}$/.test($json.phone) }}
+// What it does: true if format is "123-456-7890"
+
+// Extract numbers only
+{{ $json.text.replace(/\D/g, '') }}
+// What it does: "Price: $1,234.56" → "123456"
+
+// Check if contains URL
+{{ /https?:\/\//.test($json.message) }}
+// What it does: true if text contains http:// or https://
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔢 Complex Array Operations</div>
+                    <div class="term-explain">Advanced data list manipulation</div>
+                    <div class="code-sample">
+// Sum all numbers in array
+{{ $json.prices.reduce((sum, price) => sum + price, 0) }}
+// What it does: [10, 20, 30] → 60
+
+// Find highest value
+{{ Math.max(...$json.scores) }}
+// What it does: [85, 92, 78] → 92
+
+// Remove duplicates
+{{ [...new Set($json.emails)] }}
+// What it does: [a@x, b@x, a@x] → [a@x, b@x]
+
+// Group by property
+{{ Object.groupBy($json.items, item => item.category) }}
+// What it does: Group products by category
+
+// Get unique values count
+{{ new Set($json.tags).size }}
+// What it does: Count distinct tags
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚙️ Error Handling in Expressions</div>
+                    <div class="term-explain">Prevent crashes from bad data</div>
+                    <div class="code-sample">
+// Try-catch for risky operations
+{{ (() => {
+  try {
+    return JSON.parse($json.data);
+  } catch(e) {
+    return {error: 'Invalid JSON'};
+  }
+})() }}
+// What it does: Parse JSON or return error object safely
+
+// Check array exists before accessing
+{{ Array.isArray($json.items) ? $json.items[0] : null }}
+// What it does: Safely get first item or null
+
+// Multiple fallbacks
+{{ $json.title || $json.name || $json.label || 'Untitled' }}
+// What it does: Use first non-empty value found
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔗 Working with URLs</div>
+                    <div class="term-explain">Parse and build URLs</div>
+                    <div class="code-sample">
+// Extract domain from URL
+{{ new URL($json.website).hostname }}
+// What it does: "https://example.com/page" → "example.com"
+
+// Get query parameter
+{{ new URL($json.url).searchParams.get('id') }}
+// What it does: From "page?id=123" get "123"
+
+// Build URL with parameters
+{{ 'https://api.example.com/users?' + 
+  new URLSearchParams({
+    page: $json.page,
+    limit: 50
+  }) }}
+// What it does: Create "...users?page=1&limit=50"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎲 Random & Unique Values</div>
+                    <div class="term-explain">Generate IDs and random data</div>
+                    <div class="code-sample">
+// Generate UUID
+{{ crypto.randomUUID() }}
+// What it does: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+// Random number between 1-100
+{{ Math.floor(Math.random() * 100) + 1 }}
+// What it does: Random integer from 1 to 100
+
+// Timestamp-based ID
+{{ 'ID-' + Date.now() }}
+// What it does: "ID-1707062400000"
+
+// Random item from array
+{{ $json.options[Math.floor(
+  Math.random() * $json.options.length
+)] }}
+// What it does: Pick random value from list
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📦 Object Manipulation</div>
+                    <div class="term-explain">Work with data objects - keys, values, merging</div>
+                    <div class="code-sample">
+// Get all keys from object
+{{ Object.keys($json) }}
+// What it does: {name:"John", age:30} → ["name", "age"]
+
+// Get all values
+{{ Object.values($json.user) }}
+// What it does: {name:"John", age:30} → ["John", 30]
+
+// Get key-value pairs
+{{ Object.entries($json.data) }}
+// What it does: {a:1, b:2} → [["a",1], ["b",2]]
+
+// Merge two objects
+{{ Object.assign({}, $json.defaults, $json.custom) }}
+// What it does: Combine defaults with custom overrides
+
+// Check if key exists
+{{ Object.hasOwn($json, 'email') }}
+// What it does: true if 'email' field exists
+
+// Remove undefined values
+{{ Object.fromEntries(
+  Object.entries($json).filter(([k,v]) => v !== undefined)
+) }}
+// What it does: Clean object of undefined fields
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔍 Advanced Array Filtering</div>
+                    <div class="term-explain">Complex array searches and filters</div>
+                    <div class="code-sample">
+// Find first matching item
+{{ $json.users.find(u => u.role === 'admin') }}
+// What it does: Returns first admin user object
+
+// Check if any match condition
+{{ $json.items.some(item => item.price > 100) }}
+// What it does: true if at least one item costs >$100
+
+// Check if all match condition  
+{{ $json.tasks.every(task => task.completed) }}
+// What it does: true only if ALL tasks completed
+
+// Find index of item
+{{ $json.products.findIndex(p => p.sku === 'ABC123') }}
+// What it does: Returns position number (0,1,2...) or -1
+
+// Get last N items
+{{ $json.records.slice(-10) }}
+// What it does: Last 10 items from array
+
+// Check if array contains value
+{{ $json.tags.includes('urgent') }}
+// What it does: true if 'urgent' is in tags array
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎯 Type Checking & Validation</div>
+                    <div class="term-explain">Check data types before processing</div>
+                    <div class="code-sample">
+// Check if is array
+{{ Array.isArray($json.items) }}
+// What it does: true for [1,2,3], false for {a:1}
+
+// Check type of value
+{{ typeof $json.count }}
+// What it does: "number", "string", "object", "boolean", etc.
+
+// Check if is number (not NaN)
+{{ !isNaN($json.value) && isFinite($json.value) }}
+// What it does: true for real numbers only
+
+// Check if null or undefined
+{{ $json.data == null }}
+// What it does: true for both null and undefined
+
+// Check if empty string
+{{ $json.name === '' || $json.name?.trim() === '' }}
+// What it does: true if empty or only whitespace
+
+// Validate email format
+{{ /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($json.email) }}
+// What it does: Basic email validation
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔄 Type Conversion</div>
+                    <div class="term-explain">Convert between data types safely</div>
+                    <div class="code-sample">
+// String to number
+{{ Number($json.price) }}
+{{ parseInt($json.count, 10) }}  // integer
+{{ parseFloat($json.amount) }}   // decimal
+// What it does: "123.45" → 123.45
+
+// Number to string
+{{ String($json.id) }}
+{{ $json.count.toString() }}
+// What it does: 123 → "123"
+
+// String to boolean
+{{ $json.flag === 'true' }}
+{{ Boolean($json.value) }}
+// What it does: "true" → true, "" → false
+
+// Boolean to number
+{{ Number($json.isActive) }}
+{{ +$json.completed }}
+// What it does: true → 1, false → 0
+
+// Date to timestamp
+{{ new Date($json.date).getTime() }}
+// What it does: "2026-02-04" → 1707062400000
+
+// Array to string
+{{ $json.tags.join(', ') }}
+// What it does: ["a","b","c"] → "a, b, c"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📝 Template Literals & Multi-line</div>
+                    <div class="term-explain">Build complex strings with variables</div>
+                    <div class="code-sample">
+// Multi-line HTML template
+{{ `
+<div class="user">
+  <h2>${$json.name}</h2>
+  <p>Email: ${$json.email}</p>
+  <p>Joined: ${$json.created_at}</p>
+</div>
+` }}
+// What it does: Creates formatted HTML
+
+// SQL query template
+{{ `
+SELECT * FROM orders 
+WHERE customer_id = '${$json.id}'
+AND status = 'pending'
+ORDER BY created_at DESC
+` }}
+// What it does: Dynamic SQL query
+
+// Email body template
+{{ `
+Hi ${$json.firstName},
+
+Thank you for your order #${$json.orderNumber}.
+Total: $${$json.total}
+
+Track your order: ${$json.trackingUrl}
+
+Best regards,
+Team
+` }}
+// What it does: Personalized email content
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚖️ Comparison Operators Deep Dive</div>
+                    <div class="term-explain">Different ways to compare values</div>
+                    <div class="code-sample">
+// Strict equality (type matters)
+{{ $json.id === 123 }}
+// What it does: true for 123, false for "123"
+
+// Loose equality (converts types)
+{{ $json.count == '5' }}
+// What it does: true for both 5 and "5"
+
+// Not equal
+{{ $json.status !== 'cancelled' }}
+// What it does: true if status is anything but cancelled
+
+// Greater than / less than
+{{ $json.age >= 18 }}
+{{ $json.price < 100 }}
+// What it does: Numeric comparisons
+
+// String comparison (alphabetical)
+{{ $json.name > 'M' }}
+// What it does: true for "Smith", false for "Brown"
+
+// Multiple conditions with AND
+{{ $json.age >= 18 && $json.verified === true }}
+// What it does: Both must be true
+
+// Multiple conditions with OR
+{{ $json.type === 'admin' || $json.type === 'moderator' }}
+// What it does: Either can be true
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔀 Ternary Chains</div>
+                    <div class="term-explain">Multiple conditions in one line</div>
+                    <div class="code-sample">
+// Nested ternary for multiple conditions
+{{ $json.score >= 90 ? 'A' :
+   $json.score >= 80 ? 'B' :
+   $json.score >= 70 ? 'C' :
+   $json.score >= 60 ? 'D' : 'F' }}
+// What it does: Grade based on score
+
+// Priority assignment
+{{ $json.priority === 'high' ? 1 :
+   $json.priority === 'medium' ? 2 :
+   $json.priority === 'low' ? 3 : 4 }}
+// What it does: Convert text to number
+
+// Status badge color
+{{ $json.status === 'active' ? 'green' :
+   $json.status === 'pending' ? 'yellow' :
+   $json.status === 'error' ? 'red' : 'gray' }}
+// What it does: Map status to color
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔢 Advanced Math Functions</div>
+                    <div class="term-explain">Beyond basic arithmetic</div>
+                    <div class="code-sample">
+// Round up
+{{ Math.ceil($json.value) }}
+// What it does: 4.1 → 5
+
+// Round down  
+{{ Math.floor($json.value) }}
+// What it does: 4.9 → 4
+
+// Absolute value (remove negative)
+{{ Math.abs($json.difference) }}
+// What it does: -15 → 15
+
+// Power (exponent)
+{{ Math.pow($json.base, $json.exponent) }}
+// What it does: 2^3 = 8
+
+// Square root
+{{ Math.sqrt($json.number) }}
+// What it does: √16 = 4
+
+// Min/Max from multiple values
+{{ Math.min($json.a, $json.b, $json.c) }}
+{{ Math.max($json.prices) }} // for arrays use spread
+// What it does: Find smallest/largest
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">✂️ Array Slicing & Splicing</div>
+                    <div class="term-explain">Extract and modify array portions</div>
+                    <div class="code-sample">
+// Get portion of array (doesn't modify original)
+{{ $json.items.slice(0, 5) }}
+// What it does: First 5 items
+
+{{ $json.items.slice(5, 10) }}
+// What it does: Items 6-10 (for pagination)
+
+{{ $json.items.slice(-3) }}
+// What it does: Last 3 items
+
+// Split array into chunks
+{{ (() => {
+  const arr = $json.items;
+  const size = 10;
+  const chunks = [];
+  for(let i=0; i<arr.length; i+=size) {
+    chunks.push(arr.slice(i, i+size));
+  }
+  return chunks;
+})() }}
+// What it does: [1,2,3...30] → [[1...10],[11...20],[21...30]]
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔗 String Concatenation Methods</div>
+                    <div class="term-explain">Different ways to combine strings</div>
+                    <div class="code-sample">
+// Using + operator
+{{ $json.firstName + ' ' + $json.lastName }}
+// What it does: "John" + "Doe" → "John Doe"
+
+// Template literal (preferred)
+{{ `${$json.firstName} ${$json.lastName}` }}
+// What it does: Same result, cleaner syntax
+
+// Array join
+{{ [$json.street, $json.city, $json.state].join(', ') }}
+// What it does: "123 Main St, Boston, MA"
+
+// Concat method
+{{ $json.title.concat(' - ', $json.subtitle) }}
+// What it does: "Article - Subtitle"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎨 Destructuring & Spread</div>
+                    <div class="term-explain">Extract values elegantly</div>
+                    <div class="code-sample">
+// Array destructuring
+{{ (() => {
+  const [first, second, ...rest] = $json.items;
+  return {first, second, remaining: rest.length};
+})() }}
+// What it does: Extract first two items, count rest
+
+// Object destructuring
+{{ (() => {
+  const {name, email, ...otherFields} = $json.user;
+  return {name, email, extras: Object.keys(otherFields)};
+})() }}
+// What it does: Extract specific fields, gather rest
+
+// Spread to copy array
+{{ [...$json.original, 'new item'] }}
+// What it does: Copy array and add item
+
+// Spread to merge objects
+{{ {...$json.defaults, ...$json.overrides} }}
+// What it does: Merge with overrides taking precedence
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 Safe Property Access</div>
+                    <div class="term-explain">Prevent errors from missing data</div>
+                    <div class="code-sample">
+// Optional chaining (won't crash if undefined)
+{{ $json.user?.profile?.avatar }}
+// What it does: Returns undefined if any level missing
+
+// With array access
+{{ $json.items?.[0]?.name }}
+// What it does: Safely get first item's name
+
+// With function calls
+{{ $json.getUser?.() }}
+// What it does: Only call if function exists
+
+// Combine with nullish coalescing
+{{ $json.user?.name ?? 'Anonymous' }}
+// What it does: Use name or default if missing
+
+// Deep object access safely
+{{ $json.data?.results?.[0]?.metadata?.tags?.[0] }}
+// What it does: Won't crash at any missing level
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📊 Data Aggregation</div>
+                    <div class="term-explain">Calculate statistics from arrays</div>
+                    <div class="code-sample">
+// Sum of array
+{{ $json.numbers.reduce((sum, n) => sum + n, 0) }}
+// What it does: [1,2,3,4,5] → 15
+
+// Average
+{{ $json.scores.reduce((sum,n)=>sum+n,0) / $json.scores.length }}
+// What it does: [80,90,100] → 90
+
+// Count items by condition
+{{ $json.items.filter(i => i.status === 'active').length }}
+// What it does: How many active items
+
+// Group and count
+{{ $json.items.reduce((acc, item) => {
+  acc[item.category] = (acc[item.category] || 0) + 1;
+  return acc;
+}, {}) }}
+// What it does: {electronics: 5, clothing: 3}
+
+// Find min/max with objects
+{{ $json.products.reduce((min, p) => 
+  p.price < min.price ? p : min
+) }}
+// What it does: Product with lowest price
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🌐 URL Query Parameters</div>
+                    <div class="term-explain">Parse and build URL parameters</div>
+                    <div class="code-sample">
+// Parse query string
+{{ Object.fromEntries(
+  new URLSearchParams($json.queryString)
+) }}
+// What it does: "?page=2&limit=50" → {page:"2", limit:"50"}
+
+// Build query string from object
+{{ new URLSearchParams({
+  search: $json.term,
+  category: $json.cat,
+  sort: 'price'
+}).toString() }}
+// What it does: {term:"laptop"} → "search=laptop&category=&sort=price"
+
+// Get single parameter
+{{ new URL($json.fullUrl).searchParams.get('id') }}
+// What it does: Extract 'id' value from URL
+
+// Add parameter to existing URL
+{{ (() => {
+  const url = new URL($json.baseUrl);
+  url.searchParams.set('token', $json.token);
+  return url.toString();
+})() }}
+// What it does: Add/update token parameter
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⏱️ Timestamps & Unix Time</div>
+                    <div class="term-explain">Work with epoch timestamps</div>
+                    <div class="code-sample">
+// Current timestamp (milliseconds)
+{{ Date.now() }}
+// What it does: 1707062400000
+
+// Current timestamp (seconds)
+{{ Math.floor(Date.now() / 1000) }}
+// What it does: 1707062400 (Unix timestamp)
+
+// Date to timestamp
+{{ new Date($json.dateString).getTime() }}
+// What it does: "2026-02-04" → timestamp
+
+// Timestamp to date
+{{ new Date($json.timestamp * 1000).toISOString() }}
+// What it does: 1707062400 → "2026-02-04T00:00:00.000Z"
+
+// Add days to timestamp
+{{ $json.timestamp + (7 * 24 * 60 * 60 * 1000) }}
+// What it does: Add 7 days in milliseconds
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🧮 Percentage Calculations</div>
+                    <div class="term-explain">Common percentage operations</div>
+                    <div class="code-sample">
+// Calculate percentage
+{{ ($json.part / $json.total * 100).toFixed(2) + '%' }}
+// What it does: 25/100 → "25.00%"
+
+// Find what % of total
+{{ Math.round($json.value / $json.max * 100) }}
+// What it does: 75/100 → 75
+
+// Increase by percentage
+{{ $json.price * (1 + $json.increase / 100) }}
+// What it does: $100 + 10% → $110
+
+// Decrease by percentage
+{{ $json.price * (1 - $json.discount / 100) }}
+// What it does: $100 - 20% → $80
+
+// Percentage change
+{{ (($json.new - $json.old) / $json.old * 100).toFixed(1) }}
+// What it does: From 50 to 75 → "+50.0%"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚡ Async Operations in Code Node</div>
+                    <div class="term-explain">Handle promises and async/await properly</div>
+                    <div class="code-sample">
+// Multiple parallel API calls
+const results = await Promise.all([
+  fetch('https://api1.com/data'),
+  fetch('https://api2.com/data'),
+  fetch('https://api3.com/data')
+]);
+// What it does: All 3 calls run simultaneously, wait for all
+
+// Sequential with error handling
+try {
+  const user = await fetch('/api/user/' + $json.id);
+  const orders = await fetch('/api/orders?user=' + user.id);
+  return {user, orders};
+} catch(error) {
+  return {error: error.message};
+}
+// What it does: Call APIs in order, handle errors gracefully
+
+// Race condition (first to complete wins)
+const fastest = await Promise.race([
+  fetch('https://cdn1.com/file'),
+  fetch('https://cdn2.com/file')
+]);
+// What it does: Use whichever CDN responds first
+
+// Timeout wrapper
+const timeout = (ms) => new Promise(resolve => 
+  setTimeout(() => resolve({timeout: true}), ms)
+);
+const result = await Promise.race([
+  fetch('/slow-api'),
+  timeout(5000)
+]);
+// What it does: Cancel if takes >5 seconds
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔄 Complex Data Transformations</div>
+                    <div class="term-explain">Reshape and restructure nested data</div>
+                    <div class="code-sample">
+// Flatten nested array of arrays
+{{ $json.categories.flatMap(cat => cat.products) }}
+// What it does: [[p1,p2],[p3,p4]] → [p1,p2,p3,p4]
+
+// Pivot data (rows to columns)
+{{ $json.sales.reduce((acc, sale) => {
+  if (!acc[sale.date]) acc[sale.date] = {};
+  acc[sale.date][sale.product] = sale.amount;
+  return acc;
+}, {}) }}
+// What it does: Transform to date-keyed object with products
+
+// Deep clone object (avoid reference issues)
+{{ JSON.parse(JSON.stringify($json.original)) }}
+// What it does: Create completely independent copy
+
+// Transpose matrix
+{{ $json.matrix[0].map((_, i) => 
+  $json.matrix.map(row => row[i])
+) }}
+// What it does: Flip rows and columns
+
+// Recursive flatten
+function flatten(arr) {
+  return arr.reduce((acc, val) =>
+    Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val)
+  , []);
+}
+{{ flatten($json.deeplyNested) }}
+// What it does: [[1,[2,[3]]]] → [1,2,3]
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎯 Performance-Optimized Loops</div>
+                    <div class="term-explain">Process large arrays efficiently</div>
+                    <div class="code-sample">
+// Pre-calculate length (faster)
+const items = $json.items;
+const len = items.length;
+for (let i = 0; i < len; i++) {
+  process(items[i]);
+}
+// What it does: Avoid recalculating length each iteration
+
+// Use for...of for readability (modern JS)
+for (const item of $json.items) {
+  if (item.price > 100) {
+    expensiveItems.push(item);
+  }
+}
+// What it does: Cleaner than for(i=0...) when no index needed
+
+// Break early to save processing
+for (const user of $json.users) {
+  if (user.id === targetId) {
+    found = user;
+    break; // Stop searching
+  }
+}
+// What it does: Stop as soon as found
+
+// Batch processing large arrays
+const batchSize = 100;
+for (let i = 0; i < $json.items.length; i += batchSize) {
+  const batch = $json.items.slice(i, i + batchSize);
+  await processBatch(batch);
+}
+// What it does: Process 100 at a time to avoid memory issues
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💾 Working with Binary Data</div>
+                    <div class="term-explain">Handle files and binary content</div>
+                    <div class="code-sample">
+// Access binary data from previous node
+{{ $binary.data }}
+// What it does: Get file buffer
+
+// Get file metadata
+{{ $binary.data.mimeType }}  // "image/png"
+{{ $binary.data.fileName }}  // "photo.png"
+{{ $binary.data.fileSize }}  // bytes
+// What it does: Extract file information
+
+// Convert buffer to base64
+{{ $binary.data.data.toString('base64') }}
+// What it does: Encode for embedding in JSON/HTML
+
+// Read text from binary
+{{ $binary.data.data.toString('utf-8') }}
+// What it does: Convert file content to string
+
+// In Code Node - create binary data
+return [{
+  json: {filename: 'output.txt'},
+  binary: {
+    data: {
+      data: Buffer.from('Hello World'),
+      mimeType: 'text/plain',
+      fileName: 'output.txt'
+    }
+  }
+}];
+// What it does: Create file to download/send
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 Base64 Encoding/Decoding</div>
+                    <div class="term-explain">Encode binary data as text</div>
+                    <div class="code-sample">
+// Encode string to base64
+{{ btoa($json.text) }}
+// What it does: "Hello" → "SGVsbG8="
+
+// Decode base64 to string
+{{ atob($json.encoded) }}
+// What it does: "SGVsbG8=" → "Hello"
+
+// Encode with special characters (Unicode safe)
+{{ Buffer.from($json.text, 'utf-8').toString('base64') }}
+// What it does: Handles emoji and special chars
+
+// Decode base64 to buffer
+{{ Buffer.from($json.base64, 'base64') }}
+// What it does: For binary data like images
+
+// Create data URL for embedding
+{{ 'data:' + $json.mimeType + ';base64,' + $json.base64 }}
+// What it does: "data:image/png;base64,iVBORw..." for HTML
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div title>🔒 Encryption & Hashing</div>
+                    <div class="term-explain">Secure data with crypto operations</div>
+                    <div class="code-sample">
+// In Code Node - hash password with bcrypt
+const bcrypt = require('bcrypt');
+const hashed = await bcrypt.hash($json.password, 10);
+// What it does: One-way hash for storing passwords
+
+// MD5 hash (not for passwords!)
+const crypto = require('crypto');
+const hash = crypto.createHash('md5')
+  .update($json.data)
+  .digest('hex');
+// What it does: Quick checksum for data integrity
+
+// SHA-256 hash
+const sha256 = crypto.createHash('sha256')
+  .update($json.content)
+  .digest('hex');
+// What it does: Secure hash for verification
+
+// HMAC signature (verify webhooks)
+const hmac = crypto.createHmac('sha256', $env.SECRET_KEY)
+  .update($json.payload)
+  .digest('hex');
+const isValid = hmac === $json.signature;
+// What it does: Verify webhook authenticity
+
+// Encrypt data (AES)
+const algorithm = 'aes-256-cbc';
+const key = Buffer.from($env.ENCRYPTION_KEY, 'hex');
+const iv = crypto.randomBytes(16);
+const cipher = crypto.createCipheriv(algorithm, key, iv);
+let encrypted = cipher.update($json.sensitive, 'utf8', 'hex');
+encrypted += cipher.final('hex');
+// What it does: Two-way encryption for sensitive data
+                    </div>
+                </div>
+                
+                <div class="term-explain">🔁 Recursive Functions</div>
+                    <div class="term-explain">Functions that call themselves</div>
+                    <div class="code-sample">
+// Traverse nested object recursively
+function findValue(obj, key) {
+  if (obj[key]) return obj[key];
+  for (let k in obj) {
+    if (typeof obj[k] === 'object') {
+      const found = findValue(obj[k], key);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+{{ findValue($json, 'targetKey') }}
+// What it does: Search any level deep for a key
+
+// Flatten nested categories
+function flattenCategories(cat, level = 0) {
+  let result = [{...cat, level}];
+  if (cat.children) {
+    cat.children.forEach(child => {
+      result = result.concat(flattenCategories(child, level + 1));
+    });
+  }
+  return result;
+}
+// What it does: Tree structure → flat list with levels
+
+// Calculate nested total
+function sumNested(obj) {
+  let total = obj.value || 0;
+  if (obj.children) {
+    obj.children.forEach(child => {
+      total += sumNested(child);
+    });
+  }
+  return total;
+}
+// What it does: Sum values at all nesting levels
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⚡ Memoization for Performance</div>
+                    <div class="term-explain">Cache expensive calculations</div>
+                    <div class="code-sample">
+// Memoize expensive function
+const memo = {};
+function fibonacci(n) {
+  if (n <= 1) return n;
+  if (memo[n]) return memo[n];
+  memo[n] = fibonacci(n-1) + fibonacci(n-2);
+  return memo[n];
+}
+{{ fibonacci($json.number) }}
+// What it does: Calculate once, reuse result (1000x faster)
+
+// Cache API responses
+const cache = {};
+async function fetchWithCache(url) {
+  if (cache[url] && Date.now() - cache[url].time < 300000) {
+    return cache[url].data; // Use cached if < 5 min old
+  }
+  const data = await fetch(url);
+  cache[url] = {data, time: Date.now()};
+  return data;
+}
+// What it does: Avoid duplicate API calls
+
+// Memoize complex calculations
+const calcCache = new Map();
+function expensiveCalc(params) {
+  const key = JSON.stringify(params);
+  if (calcCache.has(key)) return calcCache.get(key);
+  const result = /* expensive operation */;
+  calcCache.set(key, result);
+  return result;
+}
+// What it does: Cache by input parameters
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔍 Advanced Regex Patterns</div>
+                    <div class="term-explain">Powerful pattern matching</div>
+                    <div class="code-sample">
+// Lookahead - match only if followed by
+{{ $json.text.match(/\d+(?= dollars)/g) }}
+// What it does: "10 dollars, 20 euros" → ["10"]
+
+// Lookbehind - match only if preceded by
+{{ $json.text.match(/(?<=\$)\d+/g) }}
+// What it does: "$50 and 30" → ["50"]
+
+// Named groups (easier extraction)
+const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+const match = $json.date.match(pattern);
+{{ match.groups.year }} // "2026"
+{{ match.groups.month }} // "02"
+// What it does: Extract parts with names
+
+// Non-greedy matching
+{{ $json.html.match(/<div>(.*?)<\/div>/g) }}
+// What it does: Match shortest <div> content (not greedy)
+
+// Multiple patterns with OR
+{{ $json.text.match(/\b(error|warning|critical)\b/gi) }}
+// What it does: Find any of these words (case-insensitive)
+
+// Validate complex formats
+const emailRegex = /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+// What it does: RFC-compliant email validation
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📊 Statistical Functions</div>
+                    <div class="term-explain">Calculate statistics from datasets</div>
+                    <div class="code-sample">
+// Median value
+{{ (() => {
+  const sorted = [...$json.numbers].sort((a,b) => a-b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : 
+    (sorted[mid-1] + sorted[mid]) / 2;
+})() }}
+// What it does: Middle value (50th percentile)
+
+// Standard deviation
+{{ (() => {
+  const avg = $json.values.reduce((a,b)=>a+b,0) / $json.values.length;
+  const squareDiffs = $json.values.map(v => Math.pow(v - avg, 2));
+  const avgSquareDiff = squareDiffs.reduce((a,b)=>a+b,0) / squareDiffs.length;
+  return Math.sqrt(avgSquareDiff);
+})() }}
+// What it does: Measure of spread/variance
+
+// Percentile calculation
+{{ (() => {
+  const sorted = [...$json.scores].sort((a,b) => a-b);
+  const index = Math.ceil((90/100) * sorted.length) - 1;
+  return sorted[index];
+})() }}
+// What it does: 90th percentile value
+
+// Mode (most frequent value)
+{{ (() => {
+  const freq = {};
+  $json.items.forEach(i => freq[i] = (freq[i] || 0) + 1);
+  return Object.keys(freq).reduce((a,b) => 
+    freq[a] > freq[b] ? a : b
+  );
+})() }}
+// What it does: Most common value
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🌐 Advanced Date Math</div>
+                    <div class="term-explain">Complex date calculations</div>
+                    <div class="code-sample">
+// Business days between dates (excluding weekends)
+{{ (() => {
+  const start = new Date($json.startDate);
+  const end = new Date($json.endDate);
+  let days = 0;
+  let current = new Date(start);
+  while (current <= end) {
+    const day = current.getDay();
+    if (day !== 0 && day !== 6) days++; // Not Sun or Sat
+    current.setDate(current.getDate() + 1);
+  }
+  return days;
+})() }}
+// What it does: Count weekdays only
+
+// Add months (handle month-end correctly)
+{{ (() => {
+  const date = new Date($json.date);
+  date.setMonth(date.getMonth() + $json.months);
+  return date.toISOString();
+})() }}
+// What it does: Jan 31 + 1 month = Feb 28 (not Mar 3)
+
+// Convert between timezones
+{{ new Date($json.utcDate).toLocaleString('en-US', {
+  timeZone: 'America/New_York'
+}) }}
+// What it does: UTC → Eastern Time
+
+// Get quarter of year
+{{ Math.floor((new Date($json.date).getMonth() + 3) / 3) }}
+// What it does: 1-4 for Q1-Q4
+
+// Is leap year
+{{ (() => {
+  const year = new Date($json.date).getFullYear();
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+})() }}
+// What it does: true for 2024, false for 2025
+
+// Last day of month
+{{ new Date(
+  new Date($json.date).getFullYear(),
+  new Date($json.date).getMonth() + 1,
+  0
+).getDate() }}
+// What it does: 28, 29, 30, or 31 depending on month
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔧 Custom Helper Functions</div>
+                    <div class="term-explain">Build reusable utilities</div>
+                    <div class="code-sample">
+// Debounce function (delay execution)
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+// What it does: Call func only after wait ms of inactivity
+
+// Throttle function (limit frequency)
+function throttle(func, limit) {
+  let inThrottle;
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}
+// What it does: Call func at most once per limit ms
+
+// Retry with exponential backoff
+async function retryWithBackoff(fn, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+      await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
+    }
+  }
+}
+// What it does: Retry with 1s, 2s, 4s delays
+
+// Deep merge objects
+function deepMerge(target, source) {
+  for (let key in source) {
+    if (source[key] instanceof Object && key in target) {
+      Object.assign(source[key], deepMerge(target[key], source[key]));
+    }
+  }
+  return Object.assign(target || {}, source);
+}
+// What it does: Merge nested objects recursively
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tips & Tricks Tab -->
+            <div id="tips" class="tab-content hidden">
+                <div class="term">
+                    <div class="term-title">⚡ Reduce API Calls with Caching</div>
+                    <div class="term-desc">Use Redis or static data to cache frequently accessed information</div>
+                    <div class="term-explain">💡 Problem: Calling pricing API 1000x/day wastes quota. Solution: Cache for 1 hour, use 24x/day instead</div>
+                    <div class="code-sample">
+// Before: Call API every time
+HTTP: GET /api/exchange-rates
+
+// After: Cache in Redis
+1. Redis GET "rates:cache"
+2. IF exists: use cached data
+3. ELSE: 
+   - HTTP GET /api/exchange-rates
+   - Redis SET "rates:cache" {{response}} EX 3600
+   - Use fresh data
+// Saves 99% of API calls!
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🐛 Debug with Execution Data</div>
+                    <div class="term-desc">Click any node to see exact input/output data from last run</div>
+                    <div class="term-explain">💡 Tip: Execution data shows you EXACTLY what each node received and returned - use it to find where data broke</div>
+                    <div class="code-sample">
+// Debugging workflow:
+1. Run workflow manually
+2. Click the node that's failing
+3. Check "Input Data" tab - is data formatted correctly?
+4. Check "Output Data" tab - what did it produce?
+5. Look for: null values, wrong types, missing fields
+6. Add Set node before problematic node to fix data shape
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔒 Never Hardcode Credentials</div>
+                    <div class="term-desc">Use environment variables or n8n credentials for ALL sensitive data</div>
+                    <div class="term-explain">💡 Bad: API_KEY = "abc123" in code. Good: {{ $env.API_KEY }} from environment</div>
+                    <div class="code-sample">
+// ❌ BAD - Hardcoded (visible in exports, logs)
+const apiKey = "sk_live_abc123xyz";
+
+// ✅ GOOD - Environment variable
+const apiKey = $env.STRIPE_API_KEY;
+
+// ✅ GOOD - n8n credential
+const apiKey = $credentials.stripeCredential.apiKey;
+
+// Pro tip: Different keys for dev/staging/production
+// Use ENV variables to switch automatically
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📝 Name Everything Descriptively</div>
+                    <div class="term-desc">Good names = self-documenting workflow. Future you will thank you!</div>
+                    <div class="term-explain">💡 "HTTP Request 3" tells you nothing. "Get Customer Data from Stripe" tells you everything</div>
+                    <div class="code-sample">
+// ❌ BAD names:
+- HTTP Request
+- HTTP Request 1
+- Code
+- IF
+
+// ✅ GOOD names:
+- Get Customer from Salesforce
+- Calculate Tax Amount
+- Check If Premium Customer
+- Send Welcome Email
+- Update Inventory Count
+
+// Tip: Use consistent prefixes
+- "Get..." for reads
+- "Update..." for writes
+- "Check..." for conditionals
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🎨 Color Code Your Nodes</div>
+                    <div class="term-desc">Visual organization makes complex workflows easier to understand</div>
+                    <div class="term-explain">💡 Use colors: Blue=API calls, Green=success paths, Red=error handlers, Yellow=data transforms</div>
+                    <div class="code-sample">
+// Suggested color scheme:
+🔵 Blue: External API calls, integrations
+🟢 Green: Success paths, happy flows
+🔴 Red: Error handlers, failure paths
+🟡 Yellow: Data transformation, processing
+🟣 Purple: Database operations
+🟠 Orange: Notifications, alerts
+⚪ Gray: Utilities, helpers
+
+// Right-click node → "Change Color"
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⏱️ Add Timeouts to HTTP Requests</div>
+                    <div class="term-desc">Prevent workflows hanging forever on slow/dead APIs</div>
+                    <div class="term-explain">💡 Default timeout can be minutes! Set 10-30 second timeout for most APIs</div>
+                    <div class="code-sample">
+// In HTTP Request Node settings:
+Timeout: 10000 (10 seconds)
+
+// For slow APIs (file downloads, heavy processing):
+Timeout: 60000 (1 minute)
+
+// Add retry logic:
+Options → Retry On Fail
+Times: 3
+Wait Between: 1000ms
+
+// This prevents: workflow stuck for hours on dead API
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📊 Monitor Execution Times</div>
+                    <div class="term-desc">Track which nodes are slow to optimize performance</div>
+                    <div class="term-explain">💡 Execution history shows exact time each node took - find the bottlenecks!</div>
+                    <div class="code-sample">
+// View execution times:
+1. Executions → Select completed run
+2. Look at duration for each node
+3. Identify slow nodes (>1 second)
+
+// Common slow operations:
+- Large data transformations → Use batching
+- Multiple sequential API calls → Make parallel
+- Complex loops → Optimize logic
+- Heavy calculations → Consider caching
+
+// Optimization example:
+Before: 5 sequential API calls = 5 seconds
+After: Promise.all() parallel = 1 second
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 Validate Webhook Signatures</div>
+                    <div class="term-desc">Prevent fake webhook requests from malicious actors</div>
+                    <div class="term-explain">💡 Services like Stripe, GitHub send HMAC signatures - verify them before processing!</div>
+                    <div class="code-sample">
+// In Code Node after Webhook:
+const crypto = require('crypto');
+
+// Get signature from header
+const receivedSig = $node["Webhook"].json.headers['x-signature'];
+
+// Calculate expected signature
+const payload = JSON.stringify($json);
+const expectedSig = crypto
+  .createHmac('sha256', $env.WEBHOOK_SECRET)
+  .update(payload)
+  .digest('hex');
+
+// Compare
+if (receivedSig !== expectedSig) {
+  throw new Error('Invalid signature - rejecting webhook');
+}
+// Now safe to process
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💾 Use Split In Batches for Large Datasets</div>
+                    <div class="term-desc">Process 10,000 items without running out of memory</div>
+                    <div class="term-explain">💡 Loading 10k items at once = memory crash. Process 100 at a time = smooth sailing</div>
+                    <div class="code-sample">
+// ❌ BAD - Load all 10,000 items
+HTTP: GET /api/customers (returns 10,000)
+Loop: Process each (memory crash!)
+
+// ✅ GOOD - Batch processing
+1. Split In Batches: 100 items per batch
+2. Loop: Process batch of 100
+3. Wait: 100ms between batches
+4. Repeat until all processed
+
+// Benefits:
+- Stays under memory limits
+- Can resume if fails mid-way  
+- Respects API rate limits
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔍 Use Test Mode Before Going Live</div>
+                    <div class="term-desc">Execute workflow with test data to verify everything works</div>
+                    <div class="term-explain">💡 Don't test on production data! Use test webhook data or manual test runs first</div>
+                    <div class="code-sample">
+// Testing workflow:
+1. Click "Execute Workflow" (manual run)
+2. Use "Test URL" for webhooks (not production)
+3. Feed test data through workflow
+4. Check each node output
+5. Fix any errors
+6. Only THEN activate for production
+
+// Use IF to separate test vs production:
+IF: {{$env.ENVIRONMENT}} === "production"
+  → Real payments, real emails
+ELSE:
+  → Log to console, skip real actions
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Errors Tab -->
+            <div id="errors" class="tab-content hidden">
+                <div class="term">
+                    <div class="term-title">❌ "Cannot read property of undefined"</div>
+                    <div class="term-desc">Trying to access a field that doesn't exist</div>
+                    <div class="term-explain">🔧 Solution: Check if field exists before accessing, or use optional chaining</div>
+                    <div class="code-sample">
+// ❌ ERROR: $json.user.profile.avatar
+// If user or profile is undefined, this crashes
+
+// ✅ FIX 1: Optional chaining
+{{ $json.user?.profile?.avatar }}
+// Returns undefined if any part missing
+
+// ✅ FIX 2: Check existence
+{{ $json.user && $json.user.profile && $json.user.profile.avatar }}
+
+// ✅ FIX 3: Provide default
+{{ $json.user?.profile?.avatar || '/default-avatar.png' }}
+
+// DEBUG: Log the data to see structure
+console.log(JSON.stringify($json, null, 2));
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">⏱️ "Timeout Error"</div>
+                    <div class="term-desc">Operation took too long to complete</div>
+                    <div class="term-explain">🔧 Solution: Increase timeout, optimize query, or use async processing</div>
+                    <div class="code-sample">
+// Common causes:
+1. API is slow/down
+2. Processing too much data
+3. Complex database query
+4. Large file download
+
+// FIXES:
+// Fix 1: Increase timeout
+HTTP Request Settings:
+  Timeout: 60000 (60 seconds)
+
+// Fix 2: Use batching
+Split In Batches: 100 items at a time
+
+// Fix 3: Async processing
+Return 202 Accepted immediately
+Process in background workflow
+
+// Fix 4: Optimize query
+Add database indexes
+Limit result set
+Cache results
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🚫 "Rate Limit Exceeded"</div>
+                    <div class="term-desc">Making too many API requests too quickly</div>
+                    <div class="term-explain">🔧 Solution: Add delays, implement rate limiting, use batching</div>
+                    <div class="code-sample">
+// Most APIs limit: 100 requests/minute or similar
+
+// FIX 1: Add delays between requests
+Loop Over Items:
+  → HTTP Request
+  → Wait: 1000ms (1 second)
+// Max 60 requests/minute
+
+// FIX 2: Batch requests
+Instead of 1000 individual calls:
+  → Batch 100 items per API call
+  → Only 10 calls total
+
+// FIX 3: Track and throttle
+Redis:
+  INCR "api_calls:{{current_minute}}"
+  IF count > 90: wait until next minute
+
+// FIX 4: Use pagination properly
+Don't fetch all 10,000 at once
+Fetch 100, process, fetch next 100
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">📝 "Invalid JSON"</div>
+                    <div class="term-desc">Trying to parse malformed JSON data</div>
+                    <div class="term-explain">🔧 Solution: Validate JSON, handle parse errors, check for hidden characters</div>
+                    <div class="code-sample">
+// ERROR: JSON.parse() fails on bad data
+
+// FIX 1: Try-catch wrapper
+try {
+  const data = JSON.parse($json.text);
+  return data;
+} catch (error) {
+  console.error('Invalid JSON:', error.message);
+  return {error: 'Failed to parse JSON'};
+}
+
+// FIX 2: Check for common issues
+// Remove BOM, trim whitespace
+const cleaned = $json.text.replace(/^\uFEFF/, '').trim();
+const data = JSON.parse(cleaned);
+
+// FIX 3: Validate before parsing
+if (typeof $json.text === 'string' && $json.text.startsWith('{')) {
+  // Likely valid JSON
+  JSON.parse($json.text);
+}
+
+// DEBUG: Look at raw text
+console.log('Raw:', $json.text);
+console.log('Type:', typeof $json.text);
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">🔐 "Authentication Failed"</div>
+                    <div class="term-desc">API rejected credentials or token expired</div>
+                    <div class="term-explain">🔧 Solution: Check credentials, refresh tokens, verify API key</div>
+                    <div class="code-sample">
+// Common causes:
+1. Wrong API key
+2. Expired OAuth token
+3. Wrong authentication method
+4. Credentials not set in n8n
+
+// FIXES:
+// Fix 1: Verify credential in n8n
+Settings → Credentials → Test connection
+
+// Fix 2: Check expiration
+OAuth tokens expire (usually 1 hour)
+Implement token refresh logic
+
+// Fix 3: Verify auth method
+Some APIs need: Bearer, others: Basic, API-Key
+Check API documentation
+
+// Fix 4: Environment variables
+Ensure $env.API_KEY is set correctly
+Different keys for dev/staging/prod?
+
+// DEBUG: Log auth headers (remove before production!)
+console.log('Auth header:', headers.Authorization);
+                    </div>
+                </div>
+                
+                <div class="term">
+                    <div class="term-title">💾 "Out of Memory" / Heap Error</div>
+                    <div class="term-desc">Workflow using too much RAM</div>
+                    <div class="term-explain">🔧 Solution: Process in batches, stream data, reduce dataset size</div>
+                    <div class="code-sample">
+// Causes:
+- Loading huge dataset (10,000+ items)
+- Large file in memory
+- Memory leak in loop
+- Storing too much in variables
+
+// FIXES:
+// Fix 1: Use Split In Batches
+Split In Batches: 100 items
+Process batch, release memory, repeat
+
+// Fix 2: Stream instead of load
+HTTP Request:
+  Response Format: Stream
+// Don't load entire file
+
+// Fix 3: Limit results
+SQL: SELECT * FROM table LIMIT 1000
+API: Add pagination
+
+// Fix 4: Clear variables
+Don't accumulate data in global vars
+Process and discard
+
+// Fix 5: Increase Node.js memory (last resort)
+NODE_OPTIONS=--max-old-space-size=4096
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName, event) {
+            console.log('showTab called with:', tabName);
+            console.log('Event:', event);
+            
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            console.log('Found tabs:', tabs.length);
+            console.log('Found contents:', contents.length);
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.add('hidden'));
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+            
+            const targetContent = document.getElementById(tabName);
+            console.log('Target element:', targetContent);
+            
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                console.log('Showing tab:', tabName);
+            } else {
+                console.error('Could not find element with id:', tabName);
+            }
+        }
+        
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const terms = document.querySelectorAll('.term');
+            
+            terms.forEach(term => {
+                const text = term.textContent.toLowerCase();
+                term.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
